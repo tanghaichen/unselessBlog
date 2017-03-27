@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="author" content="唐海宸">
+    <meta http-equiv="description" content="This is my Blog">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta http-equiv="Page-Enter" contect="revealTrans(duration=2.0,transtion= 10)">
+    <meta http-equiv="Page-Exit" contect="revealTrans(duration=2.0,transtion= 21)">
+    <meta http-equiv="keywords" content="唐海宸,博客,html,js,css,nodejs,express,生活">
+
+    <title>第二个 | <small>唐海宸</small></title>
+    <link rel="shortcut icon" href="/Blog/favicon.ico">
+    <!-- <link href="/Blog/feed/" rel="alternate" title="唐海宸" type="application/atom+xml"> -->
+    <link rel="stylesheet" href="/Blog/media/css/style.css">
+    <link rel="stylesheet" href="/Blog/media/css/highlight.css">
+    <script type="text/javascript" src="/Blog/media/js/jquery-1.7.1.min.js"></script>
+</head>
+
+<body>
+    <nav>
+        <span><a title="home page" class="" href="/Blog/">Home</a></span>
+        <span><a title="categories" class="" href="/Blog/categories/">Categories</a></span>
+        <span><a title="tags" class="" href="/Blog/tags/">Tags</a></span>
+        <span><a title="about" class="" href="/Blog/about/">About</a></span>
+        <!-- <span><a title="subscribe by RSS" class="" href="/Blog/feed/">Subscribe</a></span> -->
+    </nav>
+    <div id="container">
+        <div id="main" role="main">
+            <header>
+                <h1>第二个</h1>
+            </header>
+            <article class="content">
+                <h1>第二个</h1>
+<p>This is my first post.Click the link below to go back to index:</p>
+<a href="/Blog/index.html">Go back</a>
+<a href="/Blog/index.html">33333</a>
+
+       <li><a href="/node/2017/03/26/first-Node.html">NODE简易CRM编写</a></li>
+   
+       <li><a href="/jekyll/2017/03/20/second-post.html">第二个</a></li>
+   
+       <li><a href="/jekyll/2017/03/19/first-post.html">第一个</a></li>
+   
+       <li><a href="/ajax/2017/03/06/first-Ajax.html">Ajax简易库编写</a></li>
+   
+       <li><a href="/jekyll/2017/03/02/jekyll-install.html">jekyll安装指南</a></li>
+   
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="lineno"> 1 </span><span class="kd">var</span> <span class="nx">ary</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;q&#39;</span><span class="p">];</span>
+<span class="lineno"> 2 </span>    <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="lineno"> 3 </span>    <span class="c1">//    将数组中的每一项以对象的属性名和属性值存储起来</span>
+<span class="lineno"> 4 </span>    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">ary</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5 </span><span class="c1">//        cur 数组中的每一项</span>
+<span class="lineno"> 6 </span>        <span class="kd">var</span> <span class="nx">cur</span> <span class="o">=</span> <span class="nx">ary</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+<span class="lineno"> 7 </span>        <span class="k">if</span> <span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">cur</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 8 </span><span class="c1">//            ary.splice(i,1);             </span>
+<span class="lineno"> 9 </span>            <span class="nx">ary</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">ary</span><span class="p">[</span><span class="nx">ary</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>  
+<span class="lineno">10 </span><span class="c1">//            删除数组的最后一项 </span>
+<span class="lineno">11 </span>            <span class="nx">ary</span><span class="p">.</span><span class="nx">length</span><span class="o">--</span><span class="p">;</span>
+<span class="lineno">12 </span><span class="c1">//                ary.length-=1;</span>
+<span class="lineno">13 </span>            <span class="c1">//    ary.length = ary.length-1</span>
+<span class="lineno">14 </span>            <span class="c1">//    ary.pop()</span>
+<span class="lineno">15 </span>            <span class="nx">i</span><span class="o">--</span><span class="p">;</span>
+<span class="lineno">16 </span>            <span class="k">continue</span>
+<span class="lineno">17 </span>        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+<span class="lineno">18 </span>           <span class="nx">obj</span><span class="p">[</span><span class="nx">cur</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//将属性名和属性值 存储到obj里面</span>
+<span class="lineno">19 </span>        <span class="p">}</span>
+<span class="lineno">20 </span>    <span class="p">}</span>
+<span class="lineno">21 </span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ary</span><span class="p">);</span>
+<span class="lineno">22 </span>
+<span class="lineno">23 </span>
+<span class="lineno">24 </span>    <span class="nx">def</span> <span class="nx">show</span>
+<span class="lineno">25 </span>    <span class="nx">java</span>
+<span class="lineno">26 </span>    <span class="err">@</span><span class="nx">widget</span> <span class="o">=</span> <span class="nx">Widget</span><span class="p">(</span><span class="nx">params</span><span class="p">[</span><span class="o">:</span><span class="nx">id</span><span class="p">])</span>
+<span class="lineno">27 </span>    <span class="nx">respond_to</span> <span class="k">do</span> <span class="o">|</span><span class="nx">format</span><span class="o">|</span>
+<span class="lineno">28 </span>        <span class="nx">format</span><span class="p">.</span><span class="nx">html</span> <span class="err">#</span> <span class="nx">show</span><span class="p">.</span><span class="nx">html</span><span class="p">.</span><span class="nx">erb</span>
+<span class="lineno">29 </span>        <span class="nx">format</span><span class="p">.</span><span class="nx">json</span> <span class="p">{</span> <span class="nx">render</span> <span class="nx">json</span><span class="o">:</span> <span class="err">@</span><span class="nx">widget</span> <span class="p">}</span>
+<span class="lineno">30 </span>    <span class="nx">end</span>
+<span class="lineno">31 </span>    <span class="nx">end</span>
+<span class="lineno">32 </span>    </code></pre></figure>
+   
+<br>
+<br>
+<br>
+<br>
+<br>
+            </article>
+        </div>
+    </div>
+        <footer>
+            <p><small>Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> | Copyright 2012 - 2017 by <a href="/about/">nswebfrog</a></small></p>
+        </footer>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34960818-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>
+
+</html>
