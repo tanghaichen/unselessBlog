@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="author" content="唐海宸">
+    <meta http-equiv="description" content="This is my Blog">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta http-equiv="Page-Enter" contect="revealTrans(duration=2.0,transtion= 10)">
+    <meta http-equiv="Page-Exit" contect="revealTrans(duration=2.0,transtion= 21)">
+    <meta http-equiv="keywords" content="唐海宸,博客,html,js,css,nodejs,express,生活">
+
+    <title>Ajax简易库编写 | <small>唐海宸</small></title>
+    <link rel="shortcut icon" href="/Blog/favicon.ico">
+    <!-- <link href="/Blog/feed/" rel="alternate" title="唐海宸" type="application/atom+xml"> -->
+    <link rel="stylesheet" href="/Blog/media/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Blog/media/js/bootstrap.min.js">
+    <link rel="stylesheet" href="/Blog/media/css/style.css">
+    <link rel="stylesheet" href="/Blog/media/css/highlight.css">
+    <script type="text/javascript" src="/Blog/media/js/jquery-1.11.1.js"></script>
+    <script src="/Blog/media/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#q" id="rigto">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="q">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><span><a title="home page" class="" href="/Blog/">首页</a></span></li>
+                    <li> <span><a title="categories" class="" href="/Blog/categories/">分类</a></span></li>
+                    <li> <span><a title="tags" class="" href="/Blog/tags/">标签</a></span></li>
+                    <li><span><a title="about" class="" href="/Blog/about/">关于我</a></span></li>
+                </ul>
+            </div>
+    </nav>
+
+    <div class="container" id="container">
+        <div id="main" role="main">
+            <header>
+                <h1>Ajax简易库编写</h1>
+            </header>
+            <article class="content">
+                <section class="post">
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="lineno"> 1 </span><span class="c1">//实现ajax请求的公共方法。</span>
+<span class="lineno"> 2 </span><span class="c1">//当一个方法传递的参数值过多而且还不固定的时候，我们使用对象同意传值法(吧需要传递的参数都先放在一个对象中，一起传递进去即可)</span>
+<span class="lineno"> 3 </span><span class="kd">function</span> <span class="nx">ajax</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 4 </span>    <span class="c1">//把需要使用的参数值设定一个规则和初始值。</span>
+<span class="lineno"> 5 </span>     <span class="kd">var</span>
+<span class="lineno"> 6 </span>    <span class="k">default</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno"> 7 </span>        <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="c1">//地址</span>
+<span class="lineno"> 8 </span>        <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;get&#39;</span><span class="p">,</span> <span class="c1">//请求方式</span>
+<span class="lineno"> 9 </span>        <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="c1">//设置请求回来的内容格式json就是对象。txt就是字符串或者json格式的字符串.</span>
+<span class="lineno">10 </span>        <span class="nx">async</span><span class="o">:</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="c1">//请求是同步还是异步</span>
+<span class="lineno">11 </span>        <span class="nx">data</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> <span class="c1">//放在请求主体中的内容</span>
+<span class="lineno">12 </span>        <span class="nx">getHead</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> <span class="c1">//当ready state===2时执行的回调方法</span>
+<span class="lineno">13 </span>        <span class="nx">success</span><span class="o">:</span> <span class="kc">null</span> <span class="c1">//当ready state===4时执行的回调方法</span>
+<span class="lineno">14 </span>    <span class="p">};</span>
+<span class="lineno">15 </span>    <span class="c1">//使用用户自己传递进来的值覆盖默认值</span>
+<span class="lineno">16 </span>    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">17 </span>        <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">key</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno">18 </span>            <span class="k">default</span> <span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">options</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+<span class="lineno">19 </span>        <span class="p">};</span>
+<span class="lineno">20 </span>    <span class="p">};</span>
+<span class="lineno">21 </span>      <span class="c1">//用对象传值的好处多了会添加，少了用默认的。不受多传或少传的限制。不受顺序限制。一目了然。</span>
+<span class="lineno">22 </span>    <span class="c1">//如果当前的请求方式是get请求，我们需要在url末尾加随机数清除缓存。</span>
+<span class="lineno">23 </span>    <span class="k">if</span> <span class="p">(</span>
+<span class="lineno">24 </span>        <span class="k">default</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">&#39;get&#39;</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">25 </span>        <span class="k">default</span><span class="p">.</span><span class="nx">url</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;?&#39;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">?</span>
+<span class="lineno">26 </span>            <span class="k">default</span><span class="p">.</span><span class="nx">url</span> <span class="o">+=</span> <span class="s1">&#39;&amp;&#39;</span> <span class="o">:</span> <span class="k">default</span><span class="p">.</span><span class="nx">url</span> <span class="o">+=</span> <span class="s2">&quot;?&quot;</span><span class="p">;</span>
+<span class="lineno">27 </span>        <span class="k">default</span><span class="p">.</span><span class="nx">url</span> <span class="o">+=</span> <span class="s2">&quot;_=&quot;</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">();</span>
+<span class="lineno">28 </span>    <span class="p">}</span>
+<span class="lineno">29 </span>    <span class="c1">//SEND AJAX</span>
+<span class="lineno">30 </span>    <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="nx">createXHR</span><span class="p">;</span>
+<span class="lineno">31 </span>    <span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;default.type&#39;</span><span class="p">,</span> <span class="s1">&#39;default.url&#39;</span><span class="p">,</span>
+<span class="lineno">32 </span>        <span class="k">default</span><span class="p">.</span><span class="nx">async</span><span class="p">);</span> <span class="c1">//请求方式，url地址，同步/异步</span>
+<span class="lineno">33 </span>    <span class="nx">xhr</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">34 </span>        <span class="k">if</span> <span class="p">(</span><span class="sr">/^2\d{2}$/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno">35 </span>            <span class="c1">//想在等于2的时候操作，需要保证ajax是异步请求。</span>
+<span class="lineno">36 </span>            <span class="k">if</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">37 </span>                <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span>
+<span class="lineno">38 </span>                    <span class="k">default</span><span class="p">.</span><span class="nx">getHead</span> <span class="o">===</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">39 </span>                    <span class="k">default</span><span class="p">.</span><span class="nx">getHead</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">xhr</span><span class="p">);</span>
+<span class="lineno">40 </span>                <span class="p">}</span>
+<span class="lineno">41 </span>            <span class="p">};</span>
+<span class="lineno">42 </span>             <span class="k">if</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">43 </span>                <span class="kd">var</span> <span class="nx">val</span> <span class="o">=</span> <span class="nx">xhr</span><span class="p">.</span><span class="nx">responseText</span><span class="p">;</span> <span class="c1">//获得内容</span>
+<span class="lineno">44 </span>                <span class="c1">//如果传递的参数值是json，说明获取的内容是json格式对象</span>
+<span class="lineno">45 </span>        <span class="k">if</span> <span class="p">(</span>
+<span class="lineno">46 </span>                    <span class="k">default</span><span class="p">.</span><span class="nx">dataType</span> <span class="o">===</span> <span class="s1">&#39;json&#39;</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">47 </span>                    <span class="nx">val</span> <span class="o">=</span> <span class="s1">&#39;JSON&#39;</span> <span class="k">in</span> <span class="nb">window</span> <span class="o">?</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="o">:</span> <span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;(&#39;</span> <span class="o">+</span> <span class="nx">val</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">);</span> <span class="c1">//判断是否兼容。如果不在window下则不兼容。</span>
+<span class="lineno">48 </span>                <span class="p">}</span>
+<span class="lineno">49 </span>                 <span class="k">default</span><span class="p">.</span><span class="nx">success</span> <span class="o">&amp;&amp;</span><span class="k">default</span><span class="p">.</span><span class="nx">success</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">xhr</span><span class="p">,</span> <span class="nx">val</span><span class="p">);</span>
+<span class="lineno">50 </span>                             <span class="p">};</span>
+<span class="lineno">51 </span>        <span class="p">};</span>
+<span class="lineno">52 </span>    <span class="p">};</span>
+<span class="lineno">53 </span>     <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span>
+<span class="lineno">54 </span>        <span class="k">default</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="lineno">55 </span><span class="p">}</span>
+<span class="lineno">56 </span><span class="o">~</span><span class="kd">function</span><span class="p">(){</span>
+<span class="lineno">57 </span>    <span class="kd">function</span><span class="p">(){}</span>
+<span class="lineno">58 </span>    <span class="kd">function</span><span class="p">(){}</span>
+<span class="lineno">59 </span>    <span class="nb">window</span><span class="p">.</span><span class="nx">ajax</span><span class="o">=</span><span class="nx">ajax</span><span class="p">;</span><span class="c1">//将ajax换成全局的了。</span>
+<span class="lineno">60 </span><span class="p">}();</span>
+<span class="lineno">61 </span><span class="c1">//自执行函数形成私有作用域。</span>
+<span class="lineno">62 </span><span class="nx">ajax</span><span class="p">({</span>
+<span class="lineno">63 </span>  <span class="nx">url</span><span class="o">:</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span>
+<span class="lineno">64 </span>  <span class="nx">type</span><span class="o">:</span><span class="s1">&#39;get&#39;</span><span class="p">,</span>
+<span class="lineno">65 </span>  <span class="nx">dataType</span><span class="o">:</span><span class="s1">&#39;json&#39;</span><span class="p">,</span>
+<span class="lineno">66 </span>  <span class="nx">async</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
+<span class="lineno">67 </span>  <span class="nx">getHead</span><span class="o">:</span><span class="kd">function</span><span class="p">(){</span>
+<span class="lineno">68 </span>    <span class="c1">//this指向xhr当前AJAX对象。</span>
+<span class="lineno">69 </span>  <span class="p">},</span>
+<span class="lineno">70 </span>  <span class="nx">success</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+<span class="lineno">71 </span>     <span class="c1">//this指向xhr当前AJAX对象。</span>
+<span class="lineno">72 </span>     <span class="c1">//data:我们从服务器获取的主题内容。</span>
+<span class="lineno">73 </span>  <span class="p">}</span>
+<span class="lineno">74 </span><span class="p">});</span></code></pre></figure>
+
+<p>在html中可以获取服务器返回的文件。</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="lineno"> 1 </span><span class="kd">var</span> <span class="nx">xhr</span><span class="o">=</span><span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="lineno"> 2 </span>    <span class="kd">var</span> <span class="nx">inp</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="lineno"> 3 </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">onclick</span><span class="o">=</span><span class="p">()</span><span class="o">=&gt;</span><span class="p">{</span>
+<span class="lineno"> 4 </span><span class="nx">xhr</span><span class="p">.</span><span class="nx">onreadystatechange</span><span class="o">=</span><span class="p">()</span><span class="o">=&gt;</span><span class="p">{</span>
+<span class="lineno"> 5 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">readyState</span><span class="o">==</span><span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 6 </span>        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">)</span><span class="c1">//点击时候不做刷新可以跟服务器做数据交互</span>
+<span class="lineno"> 7 </span>    <span class="p">}</span>
+<span class="lineno"> 8 </span><span class="p">}</span>
+<span class="lineno"> 9 </span><span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;get&#39;</span><span class="p">,</span><span class="s1">&#39;http://127.0.0.1:8000/ajaxRequest&#39;</span><span class="p">,</span><span class="kc">true</span><span class="p">)</span>
+<span class="lineno">10 </span><span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="lineno">11 </span><span class="p">}</span></code></pre></figure>
+
+
+</section>
+<section class="meta">
+
+<br/>
+<br/>
+<span class="container flip">
+	<a  href="/Blog/jekyll/2017/03/19/first-post.html" class="pageNav"  >上一篇:测试一</a>
+	<a  href="/Blog/jekyll/2017/03/02/jekyll-install.html" class="pageNav pageNavRight"  >下一篇:jekyll安装指南</a>
+</span>
+<hr>
+<span class="author">
+  <a href="/about/">唐海宸</a>
+</span>
+<span class="time">
+  /
+  <time datetime="2017-03-06">2017-03-06</time>
+</span>
+<br />
+<span class="license">
+  Published under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">(CC) BY-NC-SA</a>
+</span>
+
+<span class="categories">
+  in categories
+  
+  <a href="/categories/#AJAX" title="AJAX">AJAX</a>&nbsp;
+  
+</span>
+
+
+<span class="tags">
+  tagged with
+  
+  <a href="/tags/#111" title="111">111</a>&nbsp;
+  
+</span>
+
+</section>
+
+            </article>
+        </div>
+    </div>
+        <footer>
+            <p><small>Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> | Copyright 2012 - 2017 by <a href="/about/">nswebfrog</a></small></p>
+        </footer>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34960818-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+
+    </script>
+</body>
+
+</html>
