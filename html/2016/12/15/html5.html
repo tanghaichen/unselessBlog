@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="author" content="唐海宸">
+    <meta http-equiv="description" content="This is my Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Page-Enter" contect="revealTrans(duration=2.0,transtion= 10)">
+    <meta http-equiv="Page-Exit" contect="revealTrans(duration=2.0,transtion= 21)">
+    <meta http-equiv="keywords" content="唐海宸,博客,html,js,css,nodejs,express,生活">
+    <title>html新特性初了解</title>
+    <!-- <link rel="shortcut icon" href="/favicon.ico"> -->
+    <link rel="icon" href="/media/img/favicon.ico">
+    <link rel="stylesheet" href="/media/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/media/css/style.css">
+    <script type="text/javascript" src="/media/js/jquery-1.11.1.js"></script>
+    <script src="/media/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/media/css/highlight.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-default all-nav">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#q" id="rigto">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="logo"><img style="width:200px ;" src="/media/img/thc.png" alt=""></a>
+        </div>
+        <div class="collapse navbar-collapse" id="q">
+            <ul class="nav navbar-nav navbar-right">
+            <li>
+            <div class="cb-search-tool" style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px;
+      opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
+            <input type="text" class="form-control cb-search-content" id="cb-search-content" style="position: fixed; top: 60px" placeholder="文章标题 标签">
+            <div style="position: fixed; top: 16px; right: 16px;">
+                <img src="/search/img/cb-close.png" id="cb-close-btn" />
+            </div>
+        </div>
+          <input type="text" class="form-control" placeholder="点此搜索自己喜欢的文章  (双击ctrl试一下)" id="cb-search-btn" title="双击ctrl试一下">
+            </li>
+                <li><span><a title="home page" class="" href="/">首页</a></span></li>
+                <!-- <li> <span><a title="categories" class="" href="/categories/">分类</a></span></li> -->
+                <li> <span><a title="tags" class="" href="/tags/">标签</a></span></li>
+                 <li> <span><a title="categories" class="" href="/categories/followheart/">随笔</a></span></li>
+                <li><span><a title="about" class="" href="/about/">关于我</a></span></li>
+            </ul>
+        </div>
+    </nav>
+<div class="container" id="container">
+    <div id="main" role="main">
+        <header>
+            <h1>html新特性初了解</h1>
+        </header>
+        <article class="content">
+            <h2 class="littleTitle">一、h5新增的应用程序标签</h2>
+<p>1、datalist不仅可以呈现列表,还可以进行自动匹配查找</p>
+<!-- more -->
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="lineno">1 </span>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">list</span><span class="o">=</span><span class="s">&#39;input_list&#39;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>
+<span class="lineno">2 </span>    <span class="p">&lt;</span><span class="nt">datalist</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;input_list&quot;</span><span class="p">&gt;</span><span class="c">&lt;!-- 此id与上面的list一致，可让其产生关联。 --&gt;</span>
+<span class="lineno">3 </span>        <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;angular&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<span class="lineno">4 </span>        <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;javascript&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<span class="lineno">5 </span>        <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;java&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<span class="lineno">6 </span>        <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;c++&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<span class="lineno">7 </span>        <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;nodejs&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+<span class="lineno">8 </span>    <span class="p">&lt;/</span><span class="nt">datalist</span><span class="p">&gt;</span></code></pre></figure>
+<p>2、progress进度条</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="lineno">1 </span> <span class="p">&lt;</span><span class="nt">progress</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;88&quot;</span> <span class="na">max</span><span class="o">=</span><span class="s">&quot;100&quot;</span><span class="p">&gt;</span></code></pre></figure>
+<p>3、meter定义数值。内容全部可设置</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="lineno">1 </span> <span class="p">&lt;</span><span class="nt">meter</span> <span class="na">min</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">max</span><span class="o">=</span><span class="s">&quot;100&quot;</span> <span class="na">low</span><span class="o">=</span><span class="s">&quot;40&quot;</span> <span class="na">high</span><span class="o">=</span><span class="s">&quot;90&quot;</span> <span class="na">optimum</span><span class="o">=</span><span class="s">&quot;100&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;91&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">meter</span><span class="p">&gt;</span></code></pre></figure>
+
+
+<h2 class="littleTitle">二、h5中可以设置自定义属性</h2>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="lineno">1 </span> <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;content&quot;</span> <span class="na">data-user-list</span><span class="o">=</span><span class="s">&quot;user_list&quot;</span><span class="p">&gt;</span>data-user_list自定义属性 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="lineno">1 </span><span class="c1">// 使用getAttribute获取自定义属性</span>
+<span class="lineno">2 </span><span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">)</span> <span class="p">;</span>
+<span class="lineno">3 </span><span class="kd">var</span> <span class="nx">userName</span> <span class="o">=</span> <span class="nx">user</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-user-list&#39;</span><span class="p">)</span> <span class="p">;</span>
+<span class="lineno">4 </span><span class="c1">// 使用setAttribute设置自定义属性</span>
+<span class="lineno">5 </span><span class="nx">user</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;data-user-list&#39;</span><span class="p">,</span><span class="s1">&#39;user&#39;</span><span class="p">)</span> </code></pre></figure>
+<p>attribute可以获得所有自定义的属性，而下面的方法则只获得h5中data的属性</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="lineno">1 </span><span class="kd">var</span> <span class="nx">content</span><span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">);</span>
+<span class="lineno">2 </span><span class="nx">alert</span><span class="p">(</span><span class="nx">content</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">userList</span><span class="p">)</span><span class="c1">//转化为驼峰命名法</span>
+<span class="lineno">3 </span><span class="c1">//jquery</span>
+<span class="lineno">4 </span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#content&#39;</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;userList&#39;</span><span class="p">);</span><span class="c1">//读</span></code></pre></figure>
+
+<h2 class="littleTitle">三、在h5中，input中增加了许多新的类型。其中比较常用的包括有</h2>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;date&quot;</span><span class="p">&gt;</span><span class="c">&lt;!-- 获取日历 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;datetime&quot;</span><span class="p">&gt;</span><span class="c">&lt;!-- 写入时间 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;month&quot;</span><span class="p">&gt;</span><span class="c">&lt;!-- 获取整个月份 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;week&quot;</span><span class="p">&gt;</span><span class="c">&lt;!-- 获取整个星期 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;time&quot;</span><span class="p">&gt;</span><span class="c">&lt;!-- 选择时间 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;color&quot;</span><span class="p">&gt;</span><span class="c">&lt;!-- 选择颜色。可以用value值来获取 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span><span class="p">&gt;</span><span class="c">&lt;!-- 自动校验email格式(不是特别准确) --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;range&quot;</span> <span class="na">min</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="na">max</span><span class="o">=</span><span class="s">&quot;10&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;2&quot;</span> <span class="na">step</span><span class="o">=</span><span class="s">&quot;2&quot;</span><span class="p">&gt;</span><span class="c">&lt;!-- 可操作的进度条</span>
+<span class="c">min和max指最小和最大值。value设置初始值，step表示每次移动的数字间隔 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;number&quot;</span> <span class="na">min</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="na">max</span><span class="o">=</span><span class="s">&quot;5&quot;</span><span class="p">&gt;</span><span class="c">&lt;!-- 只能输入数字。加上表示范围 --&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span>  <span class="p">&lt;</span><span class="nt">form</span> <span class="na">autocomplete</span><span class="o">=</span><span class="s">&quot;off&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">pattern</span><span class="o">=</span><span class="s">&quot;[0-9]?&quot;</span> <span class="na">required</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">novalidate</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span></code></pre></figure>
+
+	<p>（1）autocomplete默认为on，用于记录之前输入的内容，可在下次内容输入时提示。也可放input对特定生效</p>
+	<p>（2）pattern可以加一个正则表达式来验证input输入的值</p>
+	<p>（3）required是表单中必须填写的部分，否则不予提交</p>
+	<p>（4）novalidate是提交时不验证的内容。应用在form以及以下类型的 input 标签：text, search, url, telephone, email, password, date pickers, range 以及 color。</p>
+<h2 class="littleTitle">四、视频音频标签</h2>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="p">&lt;</span><span class="nt">video</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;320&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;240&quot;</span> <span class="na">loop</span> <span class="na">autoplay</span> <span class="na">controls</span> <span class="na">muted</span> <span class="na">poster</span><span class="o">=</span><span class="s">&quot;xxx.img&quot;</span><span class="p">&gt;</span><span class="c">&lt;!-- 分别为循环播放，自动播放，显示控制条 静音播放 载入时的图像 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;movie.mp4&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;video/mp4&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;movie.ogg&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;video/ogg&quot;</span><span class="p">&gt;</span>
+    您的浏览器不支持Video标签。
+<span class="p">&lt;/</span><span class="nt">video</span><span class="p">&gt;</span></code></pre></figure>
+<p>加入source时可以按照浏览器的支持方式依次往下寻找，如果都不支持，会显示文字</p>
+<p>audio和video都有很多属性和方法供我们自定义设置</p>
+<h3>属性</h3>
+<p>(1)currentTime 获取当前播放时间</p>
+<p>(2)duration 获取歌曲的总时间</p>
+<p>(3)play 是否在播放 返回true/false</p>
+<p>(4)pause 是否暂停 返回true/false</p>
+<p>(5)volume 设置或返回音频的音量 最大为</p>
+<br>
+<h3>方法</h3>
+<p>(1)play() 播放歌曲</p>
+<p>(2)pause() 暂停歌曲</p>
+<p>(3)load()重新加载歌曲</p>
+<br>
+<h3>事件</h3>
+<p>(1)play 播放事件</p>
+<p>(2)pause 暂停事件</p>
+<p>(3)timeupdate 播放位置更改</p>
+<p>(4)volumechange 音量更改</p>
+<p>(5)loadstart， durationchange， loadeddata， progress， canplay， canplaythrough等</p>
+<h2 class="littleTitle">五、js原生选择器querySelector</h2>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;season&quot;</span> <span class="na">user</span><span class="o">=</span><span class="s">&#39;e&#39;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>3<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>4<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;season&quot;</span> <span class="na">user</span><span class="o">=</span><span class="s">&#39;thc&#39;</span><span class="p">&gt;</span>22<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="lineno"> 1 </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.season&#39;</span><span class="p">);</span><span class="c1">//获取第一个.season元素</span>
+<span class="lineno"> 2 </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;.season&#39;</span><span class="p">);</span><span class="c1">//获取所有的class为.season的元素</span>
+<span class="lineno"> 3 </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;.season&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span><span class="c1">//获取第二个class为.season的元素</span>
+<span class="lineno"> 4 </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;p.season&#39;</span><span class="p">)</span><span class="c1">//获取第一个class为season的p标签</span>
+<span class="lineno"> 5 </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.season&gt;li&#39;</span><span class="p">);</span><span class="c1">//获取第一个li</span>
+<span class="lineno"> 6 </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;.season&gt;li&#39;</span><span class="p">);</span><span class="c1">//获取所有的li</span>
+<span class="lineno"> 7 </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.season&gt;li:nth-child(2)&#39;</span><span class="p">);</span><span class="c1">//获取第2个li</span>
+<span class="lineno"> 8 </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;.season&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span><span class="c1">//同样是获取第2个li</span>
+<span class="lineno"> 9 </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;div,p&#39;</span><span class="p">);</span><span class="c1">//谁的html在前面获取谁。与querySelector中的顺序无关</span>
+<span class="lineno">10 </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;div,p&#39;</span><span class="p">)</span><span class="c1">//获取所有的div和p</span>
+<span class="lineno">11 </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;[user]&#39;</span><span class="p">)</span><span class="c1">//获取所有拥有user标签的元素(可为自定义，下同)</span>
+<span class="lineno">12 </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;p[user]&#39;</span><span class="p">)</span><span class="c1">//获取第一个拥有user标签的元素</span></code></pre></figure>
+<h2 class="littleTitle">六、classList</h2>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;a b c&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="lineno">1 </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span><span class="c1">//展示所有的类</span>
+<span class="lineno">2 </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">);</span><span class="c1">//增加d类</span>
+<span class="lineno">3 </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span><span class="c1">//移除a类</span>
+<span class="lineno">4 </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span><span class="c1">//判断是否有a类，如果有增加，如果没有删除</span>
+<span class="lineno">5 </span><span class="c1">//jq中可以直接这样使用</span>
+<span class="lineno">6 </span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;d f&#39;</span><span class="p">);</span>
+<span class="lineno">7 </span><span class="c1">//但classList只能单个使用增加</span></code></pre></figure>
+<h2 class="littleTitle">六、历史记录</h2>
+<p>界面上的所有JS操作不会被浏览器记住， 就无法回到之前的状态,之前我在利用Ajax技术进行翻页操作的时候,浏览器地址栏没有发生变化,就不会记住
+历史记录,我们一旦刷新页面,Ajax操作的翻页就会消失.</p>
+<p>在HTML5中可以通过window.history操作访问历史状态,但是在H5之前,仅仅能做到前进后退,并不能更多的对历史记录进行操作</p>
+<ul>
+    <li>1. window.history.forward(); // 前进</li>
+    <li>2. window.history.back(); // 后退</li>
+    <li>3. window.history.go(); // 刷新</li>
+</ul>
+        </article>
+    </div>
+</div>
+    <footer>
+        <p><small>Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> | Copyright 2012 - 2017 by <a href="/about/">nswebfrog</a></small></p>
+
+        <link rel="stylesheet" href="/search/css/cb-search.css ">
+        <script src="/search/js/bootstrap3-typeahead.min.js "></script>
+        <script src="/search/js/cb-search.js "></script>
+    </footer>
+</body>
+
+</html>
