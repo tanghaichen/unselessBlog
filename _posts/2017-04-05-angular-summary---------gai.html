@@ -1,0 +1,112 @@
+---
+layout: post
+title: "angular简介"
+date: 2017-04-05 14:28:53 +0800
+categories: angular
+tags: [thc]
+---
+<p>我们无论是用js还是jq，要实现数据的绑定，都是要先实现监听DOM之后获取所输入的值，然后再修改DOM值。</p>
+<p>在angular中，我们所修改的ng-model，就直接通过$scope作用在了price上</p>
+<h4>html</h4>
+<!-- more -->
+{% highlight html linenos %}
+<div ng-app="app" ng-controller="contro"><!--这就是一个小模块 -->
+<p><input type="text" name="kg" ng-model="kg">公斤</p>
+<p>运费<span>{/{price()}}</span>元</p>
+</div>
+{% endhighlight %}
+<p>通常来说，我们一个页面上只有一个app，但是可以有多个controller。</p>
+<h4>js</h4>
+{% highlight javascript linenos %}
+var app = angular.module('app' , []);//获得ng-app
+app.controller('contro' , ["$scope",function($scope) {//设置控制器。其中$scope为controller中所有数据的集合
+$scope.kg = 1;//设置$scope中的kg为1
+$scope.price = function() {
+if($scope.kg <= 1) {
+return 15;
+} else {
+return ( 15 + Math.ceil($scope.kg-1)*10 );
+}
+}
+}]);//设置$scope中的price为函数
+//其中的kg在上面的ng-model中使用。price展示在span里
+{% endhighlight %}
+<p>我们会需要MVC？因为随着代码规模越来越大，切分职责是大势所趋，还有为了后期维护方便，修改一块功能不影响其他功能。还有为了复用，因为很多逻辑是一样的。而MVC只是手段，终极目标是模块化和复用。</p>
+<p>----------------------------------------------</p>
+<ul>
+	<li>ng-app   定义模块</li>
+	<li>ng-init  初始化数据</li>
+	<li>ng-bind  将数据渲染到页面上，单向绑定。跟{/{}}作用一样但不会因为未渲染被用户发现</li>
+	<li>ng-value  将数据渲染到value上。与bind功能类似</li>
+	<li>ng-model 绑定输入框中的内容。双向绑定</li>
+	<li>ng-repeat 遍历数组。</li>
+</ul>
+<p>以上为最基础的angular思想。各个部分分离出来。</p>
+<p>当然，不仅仅可以使用其规定的指令，我们同样可以自定义指令来使用(如下)</p>
+<h4>html</h4>
+{% highlight html linenos %}
+<p happy>Attribute</p>
+<happy>
+<div>Element</div>
+</happy>
+<div class="happy">Class</div>
+<!-- M:happy -->
+{% endhighlight %}
+<h4>js</h4>
+{% highlight javascript linenos %}
+var myModule = angular.module('app',[]);//先获取模块
+myModule.directive('happy', function(){//获取自定义的happy元素
+return {
+restrict: 'A', // E = Element, A = Attribute, C = Class, M = Comment
+template: '<div>今天很高兴 <div ng-transclude></div></div>',//替换内容
+// templateUrl: '',//可选参数， 代表替换模板的链接
+replace: true,//true： 覆盖原有标签, false：作用在原有标签的内容上
+transclude: false //如果为true的话可以将原有标签的内容存在ng-transclude中。如上，将其放置在template模板中
+};
+});
+{% endhighlight %}
+<p>restrict属性不同时的效果</p>
+当restrict为A时body效果
+{% highlight html linenos %}
+<p happy>今天很高兴</p>
+<happy>
+<div>Element</div>
+</happy>
+<div class="happy">Class</div>
+<!-- M:happy -->
+{% endhighlight %}
+当restrict为E时body效果
+{% highlight html linenos %}
+<p happy>Attribute</p>
+<p>今天很高兴</p>
+<div class="happy">Class</div>
+<!-- M:happy -->
+{% endhighlight %}
+当restrict为C时body效果
+{% highlight html linenos %}
+<p happy>Attribute</p>
+<happy>
+<div>Element</div>
+</happy>
+<div class="happy">今天很高兴</div>
+<!-- M:happy -->
+{% endhighlight %}
+当restrict为E时body效果
+{% highlight html linenos %}
+<p happy>Attribute</p>
+<happy>
+<div>Element</div>
+</happy>
+<div class="happy">Class</div>
+<p happy>今天很高兴</p>
+<!-- M:happy -->
+{% endhighlight %}
+<pre>
+当replace属性为true时其restrict值
+为A时，替换的是属性为happy的元素
+为E时，替换的是标签为happy的元素，
+为C时，替换的是class为happy的元素，
+为M时，替换的是注释为happy的元素，
+</pre>
+<p>当replace为false以及transclude为true时的情况各位看官可自行尝试</p>
+

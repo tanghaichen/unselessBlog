@@ -1,0 +1,101 @@
+---
+layout: post
+title:  "ajax简易库编写"
+date: 2016-03-04 18:28:53 +0800
+categories: ajax
+tags:  [thc]
+---
+<p>
+实现ajax请求的公共方法。
+当一个方法传递的参数值过多而且还不固定的时候，我们使用对象同意传值法(吧需要传递的参数都先放在一个对象中，一起传递进去即可)
+</p>
+<!-- more -->
+{% highlight javascript linenos %}
+function ajax(options) {
+    //把需要使用的参数值设定一个规则和初始值。
+   var default = {
+        url: '', //地址
+        type: 'get', //请求方式
+        dataType: 'json', //设置请求回来的内容格式json就是对象。txt就是字符串或者json格式的字符串.
+        async: 'true', //请求是同步还是异步
+        data: null, //放在请求主体中的内容
+        getHead: null, //当ready state===2时执行的回调方法
+        success: null //当ready state===4时执行的回调方法
+    };
+    //使用用户自己传递进来的值覆盖默认值
+    for (var key in options) {
+        if (options.hasOwnProperty(key)) {
+            default [key] = options[key]
+        };
+    };
+      //用对象传值的好处多了会添加，少了用默认的。不受多传或少传的限制。不受顺序限制。一目了然。
+    //如果当前的请求方式是get请求，我们需要在url末尾加随机数清除缓存。
+    if (
+        default.type === 'get') {
+        default.url.indexOf('?') >= 0 ?
+            default.url += '&' : default.url += "?";
+        default.url += "_=" + Math.random();
+    }
+    //SEND AJAX
+    var xhr = createXHR;
+    xhr.open('default.type', 'default.url',
+        default.async); //请求方式，url地址，同步/异步
+    xhr.onreadystatechange = function() {
+        if (/^2\d{2}$/.test(xhr.status)) {
+            //想在等于2的时候操作，需要保证ajax是异步请求。
+            if (xhr.readyState === 2) {
+                if (typeof
+                    default.getHead === 'function') {
+                    default.getHead.call(xhr);
+                }
+            };
+             if (xhr.readyState === 4) {
+                var val = xhr.responseText; //获得内容
+                //如果传递的参数值是json，说明获取的内容是json格式对象
+        if (
+                    default.dataType === 'json') {
+                    val = 'JSON' in window ? JSON.parse(val) : eval('(' + val + ')'); //判断是否兼容。如果不在window下则不兼容。
+                }
+                 default.success &&default.success.call(xhr, val);
+                             };
+        };
+    };
+     xhr.send(
+        default.data);
+}
+~function(){
+    function(){}
+    function(){}
+    window.ajax=ajax;//将ajax换成全局的了。
+}();
+//自执行函数形成私有作用域。
+ajax({
+  url:'data.txt',
+  type:'get',
+  dataType:'json',
+  async:false,
+  getHead:function(){
+    //this指向xhr当前AJAX对象。
+  },
+  success:function(data){
+     //this指向xhr当前AJAX对象。
+     //data:我们从服务器获取的主题内容。
+  }
+});
+{% endhighlight %}
+
+<p>在html中可以获取服务器返回的文件。</p>
+{% highlight javascript linenos %}
+var xhr=new XMLHttpRequest();
+    var inp=document.getElementsByTagName('input')[0];
+document.getElementsByTagName('button')[0].onclick=()=>{
+xhr.onreadystatechange=()=>{
+    if (xhr.readyState==4) {
+        console.log(this.responseText)//点击时候不做刷新可以跟服务器做数据交互
+    }
+}
+xhr.open('get','http://127.0.0.1:8000/ajaxRequest',true)
+xhr.send();
+}
+{% endhighlight %}
+
