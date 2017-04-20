@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="author" content="唐海宸">
+    <meta http-equiv="description" content="This is my Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Page-Enter" contect="revealTrans(duration=2.0,transtion= 10)">
+    <meta http-equiv="Page-Exit" contect="revealTrans(duration=2.0,transtion= 21)">
+    <meta http-equiv="keywords" content="唐海宸,博客,html,js,css,nodejs,express,生活">
+    <title>首页</title>
+    <link rel="shortcut icon" href="/Blog/favicon.ico">
+    <link rel="stylesheet" href="/Blog/media/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Blog/media/css/style.css">
+    <script type="text/javascript" src="/Blog/media/js/jquery-1.11.1.js"></script>
+    <script src="/Blog/media/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/Blog/media/css/highlight.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-default all-nav">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#q" id="rigto">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/Blog/" class="logo"><img style="width:200px ;" src="/Blog/media/img/thc.png" alt=""></a>
+        </div>
+        <div class="collapse navbar-collapse" id="q">
+            <ul class="nav navbar-nav navbar-right">
+            <li>
+            <div class="cb-search-tool" style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px;
+      opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
+            <input type="text" class="form-control cb-search-content" id="cb-search-content" style="position: fixed; top: 60px" placeholder="文章标题 标签">
+            <div style="position: fixed; top: 16px; right: 16px;">
+                <img src="/Blog/search/img/cb-close.png" id="cb-close-btn" />
+            </div>
+        </div>
+          <input type="text" class="form-control" placeholder="点此搜索自己喜欢的文章  (双击ctrl试一下)" id="cb-search-btn" title="双击ctrl试一下">
+            </li>
+                <li><span><a title="home page" class="" href="/Blog/">首页</a></span></li>
+                <!-- <li> <span><a title="categories" class="" href="/Blog/categories/">分类</a></span></li> -->
+                <li> <span><a title="tags" class="" href="/Blog/tags/">标签</a></span></li>
+                 <li> <span><a title="categories" class="" href="/Blog/categories/followheart/">随笔</a></span></li>
+                <li><span><a title="about" class="" href="/Blog/about/">关于我</a></span></li>
+            </ul>
+        </div>
+    </nav>
+      <div class="zmlmf" style="background-image: url('/Blog/media/img/zmlmf.jpg');">
+<p class="bannerText1">路漫漫其修远兮</p>
+<p class="bannerText2">吾将上下而求索</p>
+</div>
+    <div class="container" id="container">
+        <div id="main" role="main">
+            <header>
+                <h1>首页</h1>
+            </header>
+            <article class="content">
+                <section class="post">
+<div class="col-lg-3 col-md-3 col-sm-3">
+  <div id='tag_cloud'>
+
+<a class="tagstyleIndex" href="/Blog/categories/#ajax" title="ajax" rel="1">ajax (1)</a>
+
+<a class="tagstyleIndex" href="/Blog/categories/#javascript" title="javascript" rel="1">javascript (1)</a>
+
+<a class="tagstyleIndex" href="/Blog/categories/#html" title="html" rel="2">html (2)</a>
+
+<a class="tagstyleIndex" href="/Blog/categories/#jekyll" title="jekyll" rel="1">jekyll (1)</a>
+
+<a class="tagstyleIndex" href="/Blog/categories/#node" title="node" rel="1">node (1)</a>
+
+<a class="tagstyleIndex" href="/Blog/categories/#angular" title="angular" rel="2">angular (2)</a>
+
+</div>
+</div>
+<div class="col-lg-9 col-md-9 col-sm-9">
+<ul class="listing">
+
+  <!--  -->
+  <!--  -->
+    <!--  -->
+    <!-- <li class="listing-seperator">2017</li> -->
+  <!--  -->
+  <li class="listing-item">
+     
+    <a attr='title' class="indexTitle" href="/Blog/html/2017/04/15/html-canvas.html" title="html中canvas初解">html中canvas初解</a>
+
+    
+    <a class="abstract" href="/Blog/html/2017/04/15/html-canvas.html" title="html中canvas初解">
+    <div attr='zhaiyao' class="zhaiyao">
+    canvas
+canvas可以实现很多效果。但其所有的实现都要通过js实现，其标签本身就是一块300*150的白色画布。我们
+1    &lt;canvas width=&quot;600&quot; height=&quot;600&quot;&gt;&lt;/canvas&gt;
+下面是用canvas作的三角形
+
+
+…    
+    </div></a>
+
+        <time class="indexTime" datetime="2017-04-15">作者：唐海宸 | | 日期：2017-04-15</time>
+  </li>
+
+  <!--  -->
+  <!--  -->
+  <li class="listing-item">
+     
+    <a attr='title' class="indexTitle" href="/Blog/angular/2017/04/06/angular-simple-first.html" title="angular深入了解">angular深入了解</a>
+
+    
+    <a class="abstract" href="/Blog/angular/2017/04/06/angular-simple-first.html" title="angular深入了解">
+    <div attr='zhaiyao' class="zhaiyao">
+    我们无论是用js还是jq，要实现数据的绑定，都是要先实现监听DOM之后获取所输入的值，然后再修改DOM值。
+在angular中，我们所修改的ng-model，就直接通过$scope作用在了price上
+html
+
+
+…    
+    </div></a>
+
+        <time class="indexTime" datetime="2017-04-06">作者：唐海宸 | | 日期：2017-04-06</time>
+  </li>
+
+  <!--  -->
+  <!--  -->
+  <li class="listing-item">
+     
+    <a attr='title' class="indexTitle" href="/Blog/angular/2017/04/05/angular-summary-gai.html" title="angular简介">angular简介</a>
+
+    
+    <a class="abstract" href="/Blog/angular/2017/04/05/angular-summary-gai.html" title="angular简介">
+    <div attr='zhaiyao' class="zhaiyao">
+    我们无论是用js还是jq，要实现数据的绑定，都是要先实现监听DOM之后获取所输入的值，然后再修改DOM值。
+在angular中，我们所修改的ng-model，就直接通过$scope作用在了price上
+html
+
+
+…    
+    </div></a>
+
+        <time class="indexTime" datetime="2017-04-05">作者：唐海宸 | | 日期：2017-04-05</time>
+  </li>
+
+  <!--  -->
+  <!--  -->
+  <li class="listing-item">
+     
+    <a attr='title' class="indexTitle" href="/Blog/node/2017/03/26/Node-summary.html" title="NODE简易CRM编写">NODE简易CRM编写</a>
+
+    
+    <a class="abstract" href="/Blog/node/2017/03/26/Node-summary.html" title="NODE简易CRM编写">
+    <div attr='zhaiyao' class="zhaiyao">
+    API扫盲
+
+ 
+        CRM-->客户管理系统
+        CMS-->内容发布管理系统
+        ERP-->企业战略信息管理系统
+        OA-->企业办公管理系统//工具类的东西
+    
+    怎么工作的
+    
+    
+
+…    
+    </div></a>
+
+        <time class="indexTime" datetime="2017-03-26">作者：唐海宸 | | 日期：2017-03-26</time>
+  </li>
+
+  <!--  -->
+  <!--  -->
+  <li class="listing-item">
+     
+    <a attr='title' class="indexTitle" href="/Blog/jekyll/2017/03/02/jekyll-%E5%AE%89%E8%A3%85.html" title="jekyll安装指南">jekyll安装指南</a>
+
+    
+    <a class="abstract" href="/Blog/jekyll/2017/03/02/jekyll-%E5%AE%89%E8%A3%85.html" title="jekyll安装指南">
+    <div attr='zhaiyao' class="zhaiyao">
+    
+    什么是node
+    基于时间驱动的异步编程（我们在node环境下编写的js程序一般是异步程序）
+    node不是一门单独的语言，而是一个供js代码执行的环境。安装在服务器端，我们可以在服务器端用js编写程序。也就是说js不仅仅是在客户端的语言也是服务器端的语言
+    
+
+…    
+    </div></a>
+
+        <time class="indexTime" datetime="2017-03-02">作者：唐海宸 | | 日期：2017-03-02</time>
+  </li>
+
+  <!--  -->
+  <!--  -->
+    <!--  -->
+    <!-- <li class="listing-seperator">2016</li> -->
+  <!--  -->
+  <li class="listing-item">
+     
+    <a attr='title' class="indexTitle" href="/Blog/html/2016/12/15/html5.html" title="html新特性初了解">html新特性初了解</a>
+
+    
+    <a class="abstract" href="/Blog/html/2016/12/15/html5.html" title="html新特性初了解">
+    <div attr='zhaiyao' class="zhaiyao">
+    一、h5新增的应用程序标签
+1、datalist不仅可以呈现列表,还可以进行自动匹配查找
+
+
+…    
+    </div></a>
+
+        <time class="indexTime" datetime="2016-12-15">作者：唐海宸 | | 日期：2016-12-15</time>
+  </li>
+
+  <!--  -->
+  <!--  -->
+  <li class="listing-item">
+     
+    <a attr='title' class="indexTitle" href="/Blog/javascript/2016/03/04/cookie-simple.html" title="js简单设置cookie">js简单设置cookie</a>
+
+    
+    <a class="abstract" href="/Blog/javascript/2016/03/04/cookie-simple.html" title="js简单设置cookie">
+    <div attr='zhaiyao' class="zhaiyao">
+    今天的小项目需要用到登录框框执行缓存，因此记录一下，以便以后使用.缓存有cookie ，session ，localstorage，sessionstorage等，分别是客户端缓存，服务端缓存，本地记录，服务端记录，今天所涉及到的是cookie
+
+
+…    
+    </div></a>
+
+        <time class="indexTime" datetime="2016-03-04">作者：唐海宸 | | 日期：2016-03-04</time>
+  </li>
+
+  <!--  -->
+  <!--  -->
+  <li class="listing-item">
+     
+    <a attr='title' class="indexTitle" href="/Blog/ajax/2016/03/04/ajax-simple-exaple.html" title="ajax简易库编写">ajax简易库编写</a>
+
+    
+    <a class="abstract" href="/Blog/ajax/2016/03/04/ajax-simple-exaple.html" title="ajax简易库编写">
+    <div attr='zhaiyao' class="zhaiyao">
+    
+实现ajax请求的公共方法。
+当一个方法传递的参数值过多而且还不固定的时候，我们使用对象同意传值法(吧需要传递的参数都先放在一个对象中，一起传递进去即可)
+
+
+
+…    
+    </div></a>
+
+        <time class="indexTime" datetime="2016-03-04">作者：唐海宸 | | 日期：2016-03-04</time>
+  </li>
+
+</ul>
+
+<div id="post-pagination" class="paginator">
+
+  
+    <span class="previous disabled"><前页</span>
+  
+
+      
+      <span class="current-page">1</span>
+      
+
+    
+
+  
+    <span class="next disabled" >后页></span>
+  
+  (共8篇)
+</div>
+</div>
+
+
+ <script>
+
+var oUl=document.getElementsByClassName('listing')[0];
+var lis=oUl.children;
+var title=document.getElementsByClassName('indexTitle')
+var abstract=document.getElementsByClassName('abstract')
+for(var i=0;i<lis.length;i++){
+  abstract[i].onmouseover=function(){
+    this.style.color='#496fdb';
+    this.parentNode.children[0].style.color='#496fdb';
+  }
+  abstract[i].onmouseout=function(){
+    this.style.color='#a3a3a3';
+    this.parentNode.children[0].style.color='#404040';
+  }
+    title[i].onmouseover=function(){
+    this.style.color='#496fdb';
+  }
+  title[i].onmouseout=function(){
+    this.style.color='#404040';
+
+  }
+}
+</script>
+<!-- { include comments.md %} -->
+<script src="/Blog/media/js/jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script> 
+<!--  
+<script language="javascript">
+$.fn.tagcloud.defaults = {
+    size: {start: 1, end: 1, unit: 'em'},
+      color: {start: '#ff3333', end: '#ff3333'},
+};
+
+$(function () {
+    $('#tag_cloud a').tagcloud();
+});
+</script>-->
+</section>
+
+
+
+            </article>
+        </div>
+    </div>
+    <footer>
+        <p><small>Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> | Copyright 2012 - 2017 by <a href="/about/">nswebfrog</a></small></p>
+
+        <link rel="stylesheet" href="/Blog/search/css/cb-search.css ">
+        <script src="/Blog/search/js/bootstrap3-typeahead.min.js "></script>
+        <script src="/Blog/search/js/cb-search.js "></script>
+    </footer>
+</body>
+
+</html>
