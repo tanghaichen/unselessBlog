@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="baidu-site-verification" content="H1hQyAUkvb" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="author" content="唐海宸">
+    <meta http-equiv="description" content="This is my Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Page-Enter" contect="revealTrans(duration=2.0,transtion= 10)">
+    <meta http-equiv="Page-Exit" contect="revealTrans(duration=2.0,transtion= 21)">
+    <meta http-equiv="keywords" content="唐海宸,博客,html,js,css,nodejs,express,生活">
+    <title>angular初体验</title>
+    <!-- <link rel="shortcut icon" href="/favicon.ico"> -->
+    <link rel="icon" href=" /media/img/favicon.ico ">
+    <link rel="stylesheet" href=" /media/css/bootstrap.min.css ">
+    <link rel="stylesheet" href=" /media/css/style.css ">
+    <link rel="stylesheet" href=" /media/css/highlight.css ">
+    <script type="text/javascript" src=" /media/js/jquery-1.11.1.min.js "></script>
+    <script src=" /media/js/bootstrap.min.js "></script>
+    <script src=" /media/js/bootstrap3-typeahead.min.js "></script>
+    <script src=" /media/js/cb-search.js "></script>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?0619efc83639b2aa7321d178068fdd47";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default all-nav">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#q" id="rigto">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="logo"><img src="/media/img/thc.png" alt=""></a>
+        </div>
+        <div class="collapse navbar-collapse" id="q">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div class="cb-search-tool" style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px;
+          opacity: 0.9; background-color: #111111; z-index: 9999999; display: none;">
+                        <input type="text" class="form-control cb-search-content" id="cb-search-content" style="position: fixed; top: 60px" placeholder="文章标题 标签">
+                        <div style="position: fixed; top: 16px; right: 16px;">
+                            <img src="/media/img/cb-close.png" id="cb-close-btn" />
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" placeholder="点此搜索自己喜欢的文章  (双击ctrl试一下)" id="cb-search-btn" title="双击ctrl试一下">
+                </li>
+                <li><span><a title="home page" class="" href="/">首页</a></span></li>
+                <!-- <li> <span><a title="categories" class="" href="/categories/">分类</a></span></li> -->
+                <li> <span><a title="tags" class="" href="/tags/">标签</a></span></li>
+                <li> <span><a title="categories" class="" href="/categories/followheart/">随笔</a></span></li>
+                <li><span><a title="about" class="" href="/about/">关于我</a></span></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container" id="container">
+    <div id="main" role="main">
+        <header>
+            <h1>angular初体验</h1>
+        </header>
+        <article class="content">
+            <p>我们无论是用js还是jq，要实现数据的绑定，都是要先实现监听DOM之后获取所输入的值，然后再修改DOM值。</p>
+<p>在angular中，我们所修改的ng-model，就直接通过$scope作用在了price上</p>
+<h4>html</h4>
+<p>----------------------------------------------</p>
+<small>其中的{/{之所以加/是因为会被解析，使用时时去除</small>
+<p>----------------------------------------------</p>
+<!-- more -->
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="lineno">1 </span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">ng-app</span><span class="o">=</span><span class="s">&quot;app&quot;</span> <span class="na">ng-controller</span><span class="o">=</span><span class="s">&quot;contro&quot;</span><span class="p">&gt;</span><span class="c">&lt;!--这就是一个小模块 --&gt;</span>
+<span class="lineno">2 </span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;kg&quot;</span> <span class="na">ng-model</span><span class="o">=</span><span class="s">&quot;kg&quot;</span><span class="p">&gt;</span>公斤<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="lineno">3 </span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>运费<span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>{/{price()}}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>元<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="lineno">4 </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></figure>
+<p>通常来说，我们一个页面上只有一个app，但是可以有多个controller。</p>
+<h4>js</h4>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="lineno"> 1 </span><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;app&#39;</span> <span class="p">,</span> <span class="p">[]);</span><span class="c1">//获得ng-app</span>
+<span class="lineno"> 2 </span><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;contro&#39;</span> <span class="p">,</span> <span class="p">[</span><span class="s2">&quot;$scope&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span><span class="c1">//设置控制器。其中$scope为controller中所有数据的集合</span>
+<span class="lineno"> 3 </span><span class="nx">$scope</span><span class="p">.</span><span class="nx">kg</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="c1">//设置$scope中的kg为1</span>
+<span class="lineno"> 4 </span><span class="nx">$scope</span><span class="p">.</span><span class="nx">price</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 5 </span><span class="k">if</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">kg</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 6 </span><span class="k">return</span> <span class="mi">15</span><span class="p">;</span>
+<span class="lineno"> 7 </span><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 8 </span><span class="k">return</span> <span class="p">(</span> <span class="mi">15</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">kg</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span> <span class="p">);</span>
+<span class="lineno"> 9 </span><span class="p">}</span>
+<span class="lineno">10 </span><span class="p">}</span>
+<span class="lineno">11 </span><span class="p">}]);</span><span class="c1">//设置$scope中的price为函数</span>
+<span class="lineno">12 </span><span class="c1">//其中的kg在上面的ng-model中使用。price展示在span里</span></code></pre></figure>
+<p>我们会需要MVC？因为随着代码规模越来越大，切分职责是大势所趋，还有为了后期维护方便，修改一块功能不影响其他功能。还有为了复用，因为很多逻辑是一样的。而MVC只是手段，终极目标是模块化和复用。</p>
+<ul>
+	<li>ng-app   定义模块</li>
+	<li>ng-init  初始化数据</li>
+	<li>ng-bind  将数据渲染到页面上，单向绑定。跟{/{}}作用一样但不会因为未渲染被用户发现</li>
+	<li>ng-value  将数据渲染到value上。与bind功能类似</li>
+	<li>ng-model 绑定输入框中的内容。双向绑定</li>
+	<li>ng-repeat 遍历数组。</li>
+</ul>
+<p>以上为最基础的angular思想。各个部分分离出来。</p>
+<p>当然，不仅仅可以使用其规定的指令，我们同样可以自定义指令来使用(如下)</p>
+<h4>html</h4>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="lineno">1 </span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">happy</span><span class="p">&gt;</span>Attribute<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="lineno">2 </span><span class="p">&lt;</span><span class="nt">happy</span><span class="p">&gt;</span>
+<span class="lineno">3 </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Element<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="lineno">4 </span><span class="p">&lt;/</span><span class="nt">happy</span><span class="p">&gt;</span>
+<span class="lineno">5 </span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;happy&quot;</span><span class="p">&gt;</span>Class<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="lineno">6 </span><span class="c">&lt;!-- M:happy --&gt;</span></code></pre></figure>
+<h4>js</h4>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="lineno"> 1 </span><span class="kd">var</span> <span class="nx">myModule</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;app&#39;</span><span class="p">,[]);</span><span class="c1">//先获取模块</span>
+<span class="lineno"> 2 </span><span class="nx">myModule</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;happy&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span><span class="c1">//获取自定义的happy元素</span>
+<span class="lineno"> 3 </span><span class="k">return</span> <span class="p">{</span>
+<span class="lineno"> 4 </span><span class="nx">restrict</span><span class="o">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="c1">// E = Element, A = Attribute, C = Class, M = Comment</span>
+<span class="lineno"> 5 </span><span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;div&gt;今天很高兴 &lt;div ng-transclude&gt;&lt;/div&gt;&lt;/div&gt;&#39;</span><span class="p">,</span><span class="c1">//替换内容</span>
+<span class="lineno"> 6 </span><span class="c1">// templateUrl: &#39;&#39;,//可选参数， 代表替换模板的链接</span>
+<span class="lineno"> 7 </span><span class="nx">replace</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span><span class="c1">//true： 覆盖原有标签, false：作用在原有标签的内容上</span>
+<span class="lineno"> 8 </span><span class="nx">transclude</span><span class="o">:</span> <span class="kc">false</span> <span class="c1">//如果为true的话可以将原有标签的内容存在ng-transclude中。如上，将其放置在template模板中</span>
+<span class="lineno"> 9 </span><span class="p">};</span>
+<span class="lineno">10 </span><span class="p">});</span></code></pre></figure>
+<p>restrict属性不同时的效果</p>
+当restrict为A时body效果
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="lineno">1 </span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">happy</span><span class="p">&gt;</span>今天很高兴<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="lineno">2 </span><span class="p">&lt;</span><span class="nt">happy</span><span class="p">&gt;</span>
+<span class="lineno">3 </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Element<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="lineno">4 </span><span class="p">&lt;/</span><span class="nt">happy</span><span class="p">&gt;</span>
+<span class="lineno">5 </span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;happy&quot;</span><span class="p">&gt;</span>Class<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="lineno">6 </span><span class="c">&lt;!-- M:happy --&gt;</span></code></pre></figure>
+当restrict为E时body效果
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="lineno">1 </span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">happy</span><span class="p">&gt;</span>Attribute<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="lineno">2 </span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>今天很高兴<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="lineno">3 </span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;happy&quot;</span><span class="p">&gt;</span>Class<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="lineno">4 </span><span class="c">&lt;!-- M:happy --&gt;</span></code></pre></figure>
+当restrict为C时body效果
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="lineno">1 </span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">happy</span><span class="p">&gt;</span>Attribute<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="lineno">2 </span><span class="p">&lt;</span><span class="nt">happy</span><span class="p">&gt;</span>
+<span class="lineno">3 </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Element<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="lineno">4 </span><span class="p">&lt;/</span><span class="nt">happy</span><span class="p">&gt;</span>
+<span class="lineno">5 </span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;happy&quot;</span><span class="p">&gt;</span>今天很高兴<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="lineno">6 </span><span class="c">&lt;!-- M:happy --&gt;</span></code></pre></figure>
+当restrict为E时body效果
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="lineno">1 </span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">happy</span><span class="p">&gt;</span>Attribute<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="lineno">2 </span><span class="p">&lt;</span><span class="nt">happy</span><span class="p">&gt;</span>
+<span class="lineno">3 </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Element<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="lineno">4 </span><span class="p">&lt;/</span><span class="nt">happy</span><span class="p">&gt;</span>
+<span class="lineno">5 </span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;happy&quot;</span><span class="p">&gt;</span>Class<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="lineno">6 </span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">happy</span><span class="p">&gt;</span>今天很高兴<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="lineno">7 </span><span class="c">&lt;!-- M:happy --&gt;</span></code></pre></figure>
+<pre>
+当replace属性为true时其restrict值
+为A时，替换的是属性为happy的元素
+为E时，替换的是标签为happy的元素，
+为C时，替换的是class为happy的元素，
+为M时，替换的是注释为happy的元素，
+</pre>
+<p>当replace为false以及transclude为true时的情况各位看官可自行尝试</p>
+
+
+        </article>
+    <span class="container flip">
+    <a  href="/angular/2017/04/05/angular-summary-gai.html" class="pageNav"  >上一篇:angular简介</a>
+    <a  href="/javascript/2017/03/12/constructor-first.html" class="pageNav pageNavRight"  >下一篇:构造函数浅析</a>
+</span>
+    </div>
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+var cloudTieConfig = {
+    url: document.location.href,
+    sourceId: "",
+    productKey: "2c84cb00d4bc4014b86827dbac9ff918",
+    target: "cloud-tie-wrapper"
+};
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+    <footer>
+        <small style="display: block;line-height: 5em;">Be nice to people on the way up, because you'll need them on your way down</small>
+    </footer>
+</body>
+
+</html>
