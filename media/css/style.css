@@ -332,6 +332,8 @@ nav a:hover {
 #tag_cloud {
     margin-top: 1em;
     margin-bottom: 1em;
+    // position: absolute;
+    // top:60px;
 }
 
 #main {

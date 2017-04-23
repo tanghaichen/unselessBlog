@@ -63,12 +63,14 @@
             time1 = 0;
         });
 
+
+
         $.getJSON("/media/json/cb-search.json").done(function (data) {
+            console.log(data)
             if (data.code == 0) {
                 for (var index in data.data) {
                     var item = data.data[index];
                     names.push(item.title);
-                    // console.log(names)
                     urls.push(item.url);
                 }
 
