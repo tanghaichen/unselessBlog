@@ -74,6 +74,7 @@
 当一个方法传递的参数值过多而且还不固定的时候，我们使用对象同意传值法(吧需要传递的参数都先放在一个对象中，一起传递进去即可)
 </p>
 <!-- more -->
+
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="lineno"> 1 </span><span class="kd">function</span> <span class="nx">ajax</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 2 </span>    <span class="c1">//把需要使用的参数值设定一个规则和初始值。</span>
 <span class="lineno"> 3 </span>   <span class="kd">var</span> <span class="k">default</span> <span class="o">=</span> <span class="p">{</span>
@@ -147,6 +148,7 @@
 <span class="lineno">71 </span><span class="p">});</span></code></pre></figure>
 
 <p>在html中可以获取服务器返回的文件。</p>
+
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="lineno"> 1 </span><span class="kd">var</span> <span class="nx">xhr</span><span class="o">=</span><span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
 <span class="lineno"> 2 </span>    <span class="kd">var</span> <span class="nx">inp</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
 <span class="lineno"> 3 </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">onclick</span><span class="o">=</span><span class="p">()</span><span class="o">=&gt;</span><span class="p">{</span>
