@@ -10,7 +10,7 @@
     <meta http-equiv="Page-Enter" contect="revealTrans(duration=2.0,transtion= 10)">
     <meta http-equiv="Page-Exit" contect="revealTrans(duration=2.0,transtion= 21)">
     <meta http-equiv="keywords" content="唐海宸,博客,html,js,css,nodejs,express,生活">
-    <title>node简介</title>
+    <title>教你如何使用cloud9</title>
     <!-- <link rel="shortcut icon" href="/favicon.ico"> -->
     <link rel="icon" href="/media/img/favicon.ico">
     <link rel="stylesheet" href="/media/css/bootstrap.min.css ">
@@ -67,77 +67,43 @@
     <div class="container" id="container">
     <div id="main" role="main">
         <header>
-            <h1>node简介</h1>
+            <h1>教你如何使用cloud9</h1>
         </header>
         <article class="content">
-            <div>
-    <h4>什么是node</h4>
-    <p>基于时间驱动的异步编程（我们在node环境下编写的js程序一般是异步程序）</p>
-    <p>node不是一门单独的语言，而是一个供js代码执行的环境。安装在服务器端，我们可以在服务器端用js编写程序。也就是说js不仅仅是在客户端的语言也是服务器端的语言</p>
-    <!-- more -->
-    <h4>node与浏览器</h4>
-    <p>node用的是谷歌的v8引擎来渲染js的(运行的速度快、稳定、编写的js不需要考虑兼容)</p>
-    <p>浏览器中的全局js对象是window，而node环境中的全局js对象是global。</p>
-    <p>浏览器是安装在客户端的。为了保护 客户端的安全，基本上不可能提供用js对客户电脑磁盘上的文件进行操作的功能。但是node环境中提供了对应的I/O(服务器上文件的操作)操作.我们使用js可以对服务器磁盘下的文件进行增删改查</p>
-    <p>dom浏览器提供的一些方法，yongjs来操作当前浏览器页面对应标签的元素</p>
-    <p>bom浏览器对象模型，让我们通过js操作跟浏览器相关的信息window.nabergeter.获取当前本地浏览器的版本信息</p>
-    <h4>node提供给js很多新的方法</h4>
-    <p>用来的服务器上进行操作：http.creatServer fs.writeFileSync fs.readFileSync等等
-    </p>
-</div>
-<div>
-    <h4>node模块</h4> 提供了一些方法供我们在node环境中使用 node模块分为三种
-    <div>内置模块//http、fs、url……
-        <s>http(createServer)</s>
-        <s>fs(writeFileSync、readFileSync……)</s>
-    </div>
-    <h4>createServer//创建一个服务</h4>
-    <ul>
-        <li>server.listen(80,function(){})//变量server就是我们创建出来的这个服务。listen是监听80端口.为这个服务监听一个端口..当端口号监听成功之后执行函数(一般都是server is create success,listening on 80 port!)//</li>
-        <li>var server=http.createServer（function(){}）//里面并不是创建成功执行的函数。而是当客户端开始向服务端的当前服务(端口号为80的这个服务)发送一个请求，并且当前服务已经成功接受到这个请求后。执行这个回调函数。</li>
-        <li>该函数有（request,response）//request存放的是所有客户端的请求信息。包含客户端通过?传参的方式传递给服务器的数据内容</li>
-        <li>request.url存放的是客户端请求得文件资源的目录和名称以及传递给服务器的数据。例如:客户端请求的地址。我们服务端通过request.url获取到的是端口后的东西</li>
-        <li>//response提供了服务器端向客户端返回内容和数据的方法。</li>
-    </ul>
-    <div>
-        自定义模块(我们自己定义的模块)
-        <p>创建一个js文件，这就是自定义模块。</p>
-        <p>var a=require('./a.js')//导入a模块使用 在a里面要写上module.exports={fn:fn}//输出模块fn模块。
-        </p>
-        <ul>
-            <li>当前项目下创建一个js文件就相当于一个js模块</li>
-            <li>如果需要提供一些方法给其他的模块使用，则需要通过modul.exports导出。</li>
-            <li>在b模块中使用需要先导入a模块。var a=require('.\a')</li>
-            <li>这样就可以调取a模块中的方法了.a.fn()</li>
-        </ul>
-    </div>
-    <div>第三方模块(别人写好的模块/插件) 在NODE中使用别人的模块需要使用npm来进行管理(www.npmjs.com); 1、安装npm install 名称 -g(全局); 2.var less=require('./less');引入安装的less模块 就可以用了. 安装成功后用require把模块导入到js中。这样我们就可以使用模块中使用的方法了。
-    </div>
-</div>
-<div>
-    <h4>在服务创建成功后，如何向服务器端发送请求</h4>
-    <ul>
-        <li>直接在浏览器输入http://localhost：80(80是http协议默认的端口)</li>
-        <li>在浏览器输入本机的ip地址</li>
-        <li></li>
-        <li></li>
-    </ul>
-</div>
-<div>
-    <h4>静态资源文件的请求和处理</h4>
-    <ul>
-        <li>try catch 防止当前客户端请求文件不存在的时候，服务会终止。用其捕获异常信息，即使文件不存在，服务也不会报错，也不会终止。</li>
-        <li>处理静态资源文件请求。(html/css/js) //然后根据请求文件的后缀名获取当前文件的MIME类型(每一种资源文件都有自己的标识类型。html=>(text/html)|css=>(text/css)|text=>(text/plain)); //浏览器会按照代码的MIME类型进行渲染。
-        </li>
-        <li></li>
-        <li></li>
-    </ul>
-</div>
+            <a href="http://c9.io">cloud9官网</a>
+<p>Cloud9是一个托管在Github下的开源项目,是一个免费的在线集成开发环境，你可以在c9上自己从头开始创作一个项目，同样可以关联github后导入你github上已有的项目。在c9上创建一个项目会有1.5g的内存，足够我们小项目的使用，但是相当于你拥有了无限个1.5G的在线Ubuntu虚拟机，而且不怕用坏，如果输入什么不得了的命令出错的话，删掉就可以了。下面来简单介绍一下c9的使用。</p>
+<!-- More -->
+<p>注册cloud9需要国外信用卡</p>
+<a href=" https://money.yandex.ru/">注册信用卡</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://www.textnow.com/">申请虚拟电话</a>
+<p>如果没有可以点击上方网址申请一张虚拟信用卡，在此不做深究。</p>
+
+<p>注册成功之后，我们点击大大的+号开始创建项目，输入项目名称，项目描述，还可以选择十几种开发环境，我这里选择的是使用node，之后creat即可成功创建出一个</p>
+  <img class="boost" style="width: 100%" src="http://opihi428p.bkt.clouddn.com/TE%25XDFJZMTR~%60RUKOO%7DJT_M.png" alt="">
+<!-- <p>Ajax 
+http://gospely.com/是一种开发技术和设计模式，支持网站或应用程序，使用实时数据更新界面，无需页面刷新</p> -->
+<p>分别执行以下命令</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span>sudo apt-get install npm//安装npm
+sudo apt-get install nodejs//安装nodejs
+npm install express-generator -g//安装express
+npm install -g nodemon//安装包管理器
+sudo apt-get install -y mongodb-org//生成mongodb启动文件
+mongod --bind_ip=$IP --nojournal//绑定mongodb数据</code></pre></figure>
+<p>之后就可以使用express模板来使用项目啦</p>
+<p>直接在命令行里输入express即可创建一个express项目</p>
+
+<p>输入nodemon start，点击右上角的share，即可打开我们所建立的模板</p>
+  <img class="boost" style="width: 100%" src="http://opihi428p.bkt.clouddn.com/%7DO1QYC~IBWW0N_0SERLPQ%5D8.png" alt=""><br>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span>mongod --smallfiles//启用mongod数据库。之后另开一个终端输入mongo即可操作</code></pre></figure>
+
+<p>如果出现由于异常关闭导致的mongodb错误，只需要输入下面的命令，即可修复</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span>$ sudo mongod --repair --config /etc/mongodb.conf</code></pre></figure>
+
 
         </article>
     <span class="container flip">
-    <a  href="/node/2017/03/08/Node-summary.html" class="pageNav"  >上一篇:NODE简易CRM编写</a>
-    <a  href="/2017/03/04/path-all.html" class="pageNav pageNavRight"  >下一篇:安装环境</a>
+    <a  href="/2017/03/04/path-all.html" class="pageNav"  >上一篇:安装环境</a>
+    <a  href="/javascript/2016/03/11/cookie-simple.html" class="pageNav pageNavRight"  >下一篇:js简单设置cookie</a>
 </span><br><br><br><br><br>
     </div>
     <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>

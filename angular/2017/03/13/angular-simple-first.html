@@ -34,6 +34,7 @@
 </head>
 
 <body>
+<div class="mtk" style="position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; opacity: 0; background-color: rgb(17, 17, 17);z-index: -1;"></div>
     <nav class="navbar navbar-default all-nav">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#q" id="rigto">
@@ -165,7 +166,7 @@
     <span class="container flip">
     <a  href="/angular/2017/04/05/angular-summary-gai.html" class="pageNav"  >上一篇:angular简介</a>
     <a  href="/javascript/2017/03/12/constructor-first.html" class="pageNav pageNavRight"  >下一篇:构造函数浅析</a>
-</span>
+</span><br><br><br><br><br>
     </div>
     <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 </div>
@@ -176,6 +177,48 @@ var cloudTieConfig = {
     productKey: "2c84cb00d4bc4014b86827dbac9ff918",
     target: "cloud-tie-wrapper"
 };
+</script>
+<script>
+//执行文章图片中的点击放大以及模态框
+    var boost=document.getElementsByClassName('boost');
+    var mtk=document.getElementsByClassName('mtk')[0];
+    var body=document.getElementsByTagName('body')[0];
+    var accont=false;
+    for(var i=0;i<boost.length;i++){
+        // boost[i].style.cursor='url("/media/img/cb-close.png"),auto';
+        boost[i].style.cursor='pointer';
+        boost[i].style.position='relative';
+        boost[i].style.zIndex='1';
+        boost[i].index=i;
+        boost[i].onclick=function(){
+            if(accont){
+            mtk.style.opacity='0';
+            mtk.style.transition='all .5s';
+            this.style.transition='all .5s';
+            this.style.transform='scale(1)';
+            mtk.style.zIndex='-1';
+            this.style.zIndex='1';
+            accont=false;
+            }else{
+            mtk.style.opacity='0.9';
+            mtk.style.transition='all .5s';
+            this.style.transition='all .5s'
+            this.style.transform='scale(1.5)';
+            mtk.style.zIndex='2';
+            this.style.zIndex='3';
+            var fThis=this;
+            accont=true;
+            mtk.onclick=function(){
+              mtk.style.opacity='0';
+              mtk.style.transition='all .5s';
+              fThis.style.transition='all .5s';
+              fThis.style.transform='scale(1)';
+              mtk.style.zIndex='-1';
+              fThis.style.zIndex='1';
+    }
+            }
+        }
+    }
 </script>
 <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
 
