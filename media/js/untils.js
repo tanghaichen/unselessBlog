@@ -1,7 +1,7 @@
 function Until() {}
 Until.prototype = {
     contructor: Until,
-    //1-->实现类似于广告那种可以在滑动屏幕的时候圆滑的fixed到固定位置。
+//1-->实现类似于广告那种可以在滑动屏幕的时候圆滑的fixed到固定位置。
     tFixedAside: function(div) {
         var demo = div;
 
@@ -110,6 +110,10 @@ Until.prototype = {
             tNextText = setInterval(arguments.callee, everyText);
         }
     },
+   //4-->倒计时
+   tCountDown: function(div, options) {
+   	
+   }
 
 }
 
