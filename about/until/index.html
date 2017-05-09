@@ -8,9 +8,10 @@
     <script src="/media/js/untils.js "></script>
 </head>
 <style>
-body{
+body {
     min-width: 600px;
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -153,6 +154,8 @@ header>span {
                 <li>tFixedAside</li>
                 <li>tFixedNav</li>
                 <li>tHotNews</li>
+                <li>tcountDown</li>
+                <li>tBackTop</li>
             </ul>
         </aside>
         <div class="aritcle">
@@ -194,6 +197,7 @@ until.tFixedNav(oDiv);
             </div>
             <div class="main disNone">
                 <h3 class="title">tHotNews</h3>
+                <a href="" class="thc"></a>
                 <h4 class="way">功能介绍：</h4>
                 <p class="stage">它所实现的功能就是让一个元素在滑动到其高度的时候，就固定在顶部。如果再次返回还是再次随页面滚动</p>
                 <h4 class="user">使用方法：</h4>
@@ -206,11 +210,43 @@ until.tHotNews(oDiv,{
         everyItem: 2000,
         everyText: 100
 });</pre>
-<span>第二个参数可以不填,也可以之选择其中某一项来修改。其中的target为a标签的href，默认随news的长度为‘#’,也可以一个个填入对应链接。everyItem为切换不同条目所需的时间，everyText为每个文字出现的时间。例如这样</span>
-<div class="pre">until.tHotNews(oDiv,{everyText: 400});</div>
-<span>每400毫秒出来一个字</span>
+                    <span>第二个参数可以不填,也可以之选择其中某一项来修改。其中的target为a标签的href，默认随news的长度为‘#’,也可以一个个填入对应链接。everyItem为切换不同条目所需的时间，everyText为每个文字出现的时间。例如这样</span>
+                    <div class="pre">until.tHotNews(oDiv,{everyText: 400});</div>
+                    <span>每400毫秒出来一个字</span>
                 </div>
-                <a href="" class="thc"></a>
+            </div>
+            <div class="main disNone">
+                <h3 class="title">tcountDown</h3>
+                <div class="thc1"></div>
+                <h4 class="way">功能介绍：</h4>
+                <p class="stage">这是一个倒计时功能实现，</p>
+                <h4 class="user">使用方法：</h4>
+                <div class="stage">获取到所需要实现此功能的模块，并且在之后引用tcountDown即可。
+                    <pre class="pre">
+var oDiv=document.getElementById('div');
+until.tcountDown(oDiv,{
+            year: 2017,
+            month: 12,
+            day: 10,
+            hour:12,
+            minute:59,
+            second:59
+        },'圣诞节')
+            </pre>
+                    <p>在传入的对象中写入你所需要距离的时间，即可计算出现在距其的倒计时，最后一个写入对倒计时的描述</p>
+                </div>
+            </div>
+            <div class="main disNone">
+                <h3 class="title">tBackTop</h3>
+                <h4 class="way">功能介绍：</h4>
+                <p class="stage">它所实现的功能是点击回到顶部</p>
+                <h4 class="user">使用方法：</h4>
+                <div class="stage">获取到所需要实现此功能的模块，并且在之后引用tFixedAside即可。
+                    <pre class="pre">
+var oDiv=document.getElementById('div');
+until.tBackTop(oDiv);即可
+            </pre>
+                </div>
             </div>
         </div>
     </div>
@@ -230,7 +266,17 @@ for (var i = 0; i < asideLi.length; i++) {
 }
 //实例
 var thc = document.getElementsByClassName('thc')[0]
-until.tHotNews(thc,{})
+until.tHotNews(thc, {})
+    //实例2
+var thc1 = document.getElementsByClassName('thc1')[0]
+until.tcountDown(thc1, {
+    year: 2017,
+    month: 12,
+    day: 10,
+    hour: 12,
+    minute: 59,
+    second: 59
+}, '圣诞节')
 </script>
 
 </html>

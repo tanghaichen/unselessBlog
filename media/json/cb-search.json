@@ -68,7 +68,7 @@
     
 	{
 		"title" : "教你如何使用cloud9 - cloud9",
-		"url" : "/server/2016/04/16/ajax-simple.html"
+		"url" : "/server/2016/04/16/cloud9-simple.html"
 	}
 	
 	,
@@ -85,6 +85,14 @@
 	{
 		"title" : "ajax简易库编写 - ajax",
 		"url" : "/ajax/2016/03/06/ajax-simple-exaple.html"
+	}
+	
+	,
+	
+    
+	{
+		"title" : "ajax简介 - ajax",
+		"url" : "/ajax/2016/03/05/ajax-simple.html"
 	}
 	
     

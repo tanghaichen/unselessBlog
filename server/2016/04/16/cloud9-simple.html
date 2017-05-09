@@ -10,7 +10,7 @@
     <meta http-equiv="Page-Enter" contect="revealTrans(duration=2.0,transtion= 10)">
     <meta http-equiv="Page-Exit" contect="revealTrans(duration=2.0,transtion= 21)">
     <meta http-equiv="keywords" content="唐海宸,博客,html,js,css,nodejs,express,生活">
-    <title>安装环境</title>
+    <title>教你如何使用cloud9</title>
     <!-- <link rel="shortcut icon" href="/favicon.ico"> -->
     <link rel="icon" href="/media/img/favicon.ico">
     <link rel="stylesheet" href="/media/css/bootstrap.min.css ">
@@ -67,59 +67,43 @@
     <div class="container" id="container">
     <div id="main" role="main">
         <header>
-            <h1>安装环境</h1>
+            <h1>教你如何使用cloud9</h1>
         </header>
         <article class="content">
-                <h3>安装需要</h3>
-    <h4>安装nodejs和nvm</h4> 
-    <ul>
-        <li>
-            下载安装nodejs和nvm //在setting中加入 node_mirror: https://npm.taobao.org/mirrors/node/ npm_mirror: https://npm.taobao.org/mirrors/npm/</li>
-    <!-- more -->
-        <li>安装cnpm || 通过npm install -g cnpm --registry=https://registry.npm.taobao.org //国内镜像</li>
-        <li>npm install -g nodemon //包管理器。可以及时更新</li>
-    </ul>
-    <h4>安装express和打包工具grunt</h4>
-    <ul>
-        <li>npm install express-generator -g
-            <p><small>安装express</small></p>
-            <p>创建express模板 express myapp --view ejs express然后进入express生成的文件夹中, npm install 安装所需要的文件，最后 npm start</p>
-        </li>
-        <li>npm install grunt-cli -g
-            <p>软件打包工具</p>
-        </li>
-    </ul>
-    <h4>安装less和sass</h4>
-    <ul>
-        <li>npm install -g less
-            <p>安装less//lessc -h</p>
-        </li>
-        <li>
-            <p>npm install -g csslint</p>
-            <p>npm install -g jshint</p>
-            <small>安装sass</small>
-        </li>
-    </ul>
-    <h4>安装mongodb</h4>
-    <ul>
-        <li>
-            <p>mongodb下载安装</p>
-            <p>./bin/mongod.exe --dbpath /path/to/database --logpath /path/to/log-file --port 27017</p>
-        </li>
-    </ul>
-    <h4>安装git</h4>
-    <ul>
-        <li>官网下载git安装包安装即可</li>
-    </ul>
-    <h4>安装Ionic</h4>
-    <ul>
-        <li>cnpm install -g cordova ionic</li>
-    </ul>
+            <a href="http://c9.io">cloud9官网</a>
+<p>Cloud9是一个托管在Github下的开源项目,是一个免费的在线集成开发环境，你可以在c9上自己从头开始创作一个项目，同样可以关联github后导入你github上已有的项目。在c9上创建一个项目会有1.5g的内存，足够我们小项目的使用，但是相当于你拥有了无限个1.5G的在线Ubuntu虚拟机，而且不怕用坏，如果输入什么不得了的命令出错的话，删掉就可以了。下面来简单介绍一下c9的使用。</p>
+<!-- more -->
+<p>注册cloud9需要国外信用卡</p>
+<a href=" https://money.yandex.ru/">注册信用卡</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://www.textnow.com/">申请虚拟电话</a>
+<p>如果没有可以点击上方网址申请一张虚拟信用卡，在此不做深究。</p>
+
+<p>注册成功之后，我们点击大大的+号开始创建项目，输入项目名称，项目描述，还可以选择十几种开发环境，我这里选择的是使用node，之后creat即可成功创建出一个</p>
+  <img class="boost" style="width: 100%" src="http://opihi428p.bkt.clouddn.com/TE%25XDFJZMTR~%60RUKOO%7DJT_M.png" alt="">
+<!-- <p>Ajax 
+http://gospely.com/是一种开发技术和设计模式，支持网站或应用程序，使用实时数据更新界面，无需页面刷新</p> -->
+<p>分别执行以下命令</p>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">install</span> <span class="nx">npm</span><span class="c1">//安装npm</span>
+<span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">install</span> <span class="nx">nodejs</span><span class="c1">//安装nodejs</span>
+<span class="nx">npm</span> <span class="nx">install</span> <span class="nx">express</span><span class="o">-</span><span class="nx">generator</span> <span class="o">-</span><span class="nx">g</span><span class="c1">//安装express</span>
+<span class="nx">npm</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">nodemon</span><span class="c1">//安装包管理器</span>
+<span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">install</span> <span class="o">-</span><span class="nx">y</span> <span class="nx">mongodb</span><span class="o">-</span><span class="nx">org</span><span class="c1">//生成mongodb启动文件</span>
+<span class="nx">mongod</span> <span class="o">--</span><span class="nx">bind_ip</span><span class="o">=</span><span class="nx">$IP</span> <span class="o">--</span><span class="nx">nojournal</span><span class="c1">//绑定mongodb数据</span></code></pre></figure>
+<p>之后就可以使用express模板来使用项目啦</p>
+<p>直接在命令行里输入express即可创建一个express项目</p>
+
+<p>输入nodemon start，点击右上角的share，即可打开我们所建立的模板</p>
+  <img class="boost" style="width: 100%" src="http://opihi428p.bkt.clouddn.com/%7DO1QYC~IBWW0N_0SERLPQ%5D8.png" alt=""><br>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="nx">mongod</span> <span class="o">--</span><span class="nx">smallfiles</span><span class="c1">//启用mongod数据库。之后另开一个终端输入mongo即可操作</span></code></pre></figure>
+
+<p>如果出现由于异常关闭导致的mongodb错误，只需要输入下面的命令，即可修复</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span></span>$ sudo mongod --repair --config /etc/mongodb.conf</code></pre></figure>
+
 
         </article>
     <span class="container flip">
-    <a  href="/node/2017/03/07/node-simple.html" class="pageNav"  >上一篇:node简介</a>
-    <a  href="/server/2016/04/16/cloud9-simple.html" class="pageNav pageNavRight"  >下一篇:教你如何使用cloud9</a>
+    <a  href="/2017/03/04/path-all.html" class="pageNav"  >上一篇:安装环境</a>
+    <a  href="/javascript/2016/03/11/cookie-simple.html" class="pageNav pageNavRight"  >下一篇:js简单设置cookie</a>
 </span><br><br><br><br><br>
     </div>
     <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
