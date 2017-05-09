@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="baidu-site-verification" content="H1hQyAUkvb" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="author" content="唐海宸">
+    <meta http-equiv="description" content="This is my Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Page-Enter" contect="revealTrans(duration=2.0,transtion= 10)">
+    <meta http-equiv="Page-Exit" contect="revealTrans(duration=2.0,transtion= 21)">
+    <meta http-equiv="keywords" content="唐海宸,博客,html,js,css,nodejs,express,生活">
+    <title>页面不见了哦</title>
+    <!-- <link rel="shortcut icon" href="/favicon.ico"> -->
+    <link rel="icon" href="/media/img/favicon.ico">
+    <link rel="stylesheet" href="/media/css/bootstrap.min.css ">
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css ">
+    <script type="text/javascript" src="/media/js/jquery-1.11.1.min.js"></script>
+    <script src="/media/js/bootstrap.min.js "></script>
+    <script src="/media/js/bootstrap3-typeahead.min.js"></script>
+    <script src="/media/js/cb-search.js"></script>
+    <script src="/media/js/untils.js"></script>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?0619efc83639b2aa7321d178068fdd47";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+
+    })();
+    </script>
+</head>
+
+<body>
+<div class="mtk" style="position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; opacity: 0; background-color: rgb(17, 17, 17);z-index: -1;"></div>
+    <nav class="navbar navbar-default all-nav">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#q" id="rigto">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="logo"><img src="/media/img/thc.png" alt=""></a>
+        </div>
+        <div class="collapse navbar-collapse" id="q">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div class="cb-search-tool" style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px;
+          opacity: 0.9; background-color: #111111; z-index: 9999999; display: none;">
+                        <input type="text" class="form-control cb-search-content" id="cb-search-content" style="position: fixed; top: 60px" placeholder="文章标题 标签">
+                        <div style="position: fixed; top: 16px; right: 16px;">
+                            <img src="/media/img/cb-close.png" id="cb-close-btn" />
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" placeholder="点此搜索自己喜欢的文章  (双击ctrl试一下)" id="cb-search-btn" title="双击ctrl试一下">
+                </li>
+                <li><span><a title="home page" class="" href="/">首页</a></span></li>
+                <!-- <li> <span><a title="categories" class="" href="/categories/">分类</a></span></li> -->
+                <li> <span><a title="tags" class="" href="/tags/">标签</a></span></li>
+                <li> <span><a title="categories" class="" href="/categories/followheart/">随笔</a></span></li>
+                <li><span><a title="about" class="" href="/about/">关于我</a></span></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="zmlmf">
+<div id="loader"></div>
+    <!-- <p class="bannerText1">路漫漫其修远兮</p> -->
+    <!-- <p class="bannerText2">吾将上下而求索</p> -->
+</div>
+<div class="container" id="container">
+    <div id="main" role="main">
+        <header>
+            <h1>页面不见了哦</h1>
+        </header>
+        <article class="content">
+            <p>告知：本博最近有所调整，导致原来的链接失效了。若你来到这里，不是说明文章不在了。请点击这里<a href="/">homepage</a>来寻找。如果还找不到请帮忙发邮箱通知我。我的邮箱是tanghaichen1994@foxmail.com。感谢！！</p>
+
+<p>Error 404. Nothing found :( Where did you get that link?</p>
+
+<p>Please go to <a href="/">homepage</a> or email me:</p>
+
+<p>tanghaichen1994@foxmail.com。tankyou!!</p>
+
+
+        </article>
+    </div>
+</div>
+
+<script>
+  //style="background-image: url('/media/img/zmlmf.jpg');"
+  var loader=document.getElementById('loader');
+  var ban=document.getElementsByClassName('zmlmf')[0];
+  var opacity=1,opacit=0;;
+  var ball,banner;
+  ball=setInterval(function(){
+     opacity=opacity-0.1;
+     loader.style.opacity=opacity;
+     console.log(opacity)
+ },100)
+  setTimeout(function(){
+    clearInterval(ball)
+    loader.style.display='none'
+},1500);
+  setTimeout(function(){
+    ban.style.opacity=0;
+    ban.style.backgroundImage="url('/media/img/zmlmf.jpg')"
+    banner=setInterval(function(){
+        opacit=opacit+0.1;
+        ban.style.opacity=opacit;
+    },100);
+    setTimeout(function(){
+        clearInterval(banner)
+    },1000)
+},500)
+
+</script>
+
+    <footer>
+        <small style="display: block;line-height: 5em;">Be nice to people on the way up, because you'll need them on your way down</small>
+    </footer>
+</body>
+    <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+</html>
