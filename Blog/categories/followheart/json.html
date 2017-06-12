@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script src="/media/js/jquery-1.7.1.min.js"></script>
+<script>
+$(document).ready(function() {
+    $.getJSON("/categories/followheart/json.json").done(function(data) {
+        console.log(data)
+
+    })
+})
+</script>
+
+</html>

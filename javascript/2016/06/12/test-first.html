@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="baidu-site-verification" content="H1hQyAUkvb" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="author" content="唐海宸">
+    <meta http-equiv="description" content="This is my Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Page-Enter" contect="revealTrans(duration=2.0,transtion= 10)">
+    <meta http-equiv="Page-Exit" contect="revealTrans(duration=2.0,transtion= 21)">
+    <meta http-equiv="keywords" content="唐海宸,博客,html,js,css,nodejs,express,生活">
+    <title>js针对性的经典面试题</title>
+    <!-- <link rel="shortcut icon" href="/favicon.ico"> -->
+    <link rel="icon" href="/media/img/favicon.ico">
+    <link rel="stylesheet" href="/media/css/bootstrap.min.css ">
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link rel="stylesheet" href="/media/css/highlight.css ">
+    <script type="text/javascript" src="/media/js/jquery-1.11.1.min.js"></script>
+    <script src="/media/js/bootstrap.min.js "></script>
+    <script src="/media/js/bootstrap3-typeahead.min.js"></script>
+    <script src="/media/js/cb-search.js"></script>
+    <script src="/media/js/untils.js"></script>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?0619efc83639b2aa7321d178068fdd47";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+
+    })();
+    </script>
+</head>
+
+<body>
+<div class="mtk" style="position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; opacity: 0; background-color: rgb(17, 17, 17);z-index: -1;"></div>
+    <nav class="navbar navbar-default all-nav">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#q" id="rigto">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="logo"><img src="/media/img/thc.png" alt=""></a>
+        </div>
+        <div class="collapse navbar-collapse" id="q">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div class="cb-search-tool" style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px;
+          opacity: 0.9; background-color: #111111; z-index: 9999999; display: none;">
+                        <input type="text" class="form-control cb-search-content" id="cb-search-content" style="position: fixed; top: 60px" placeholder="文章标题 标签">
+                        <div style="position: fixed; top: 16px; right: 16px;">
+                            <img src="/media/img/cb-close.png" id="cb-close-btn" />
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" placeholder="点此搜索自己喜欢的文章  (双击ctrl试一下)" id="cb-search-btn" title="双击ctrl试一下">
+                </li>
+                <li><span><a title="home page" class="" href="/">首页</a></span></li>
+                <!-- <li> <span><a title="categories" class="" href="/categories/">分类</a></span></li> -->
+                <li> <span><a title="tags" class="" href="/tags/">标签</a></span></li>
+                <li> <span><a title="categories" class="" href="/categories/followheart/">随笔</a></span></li>
+                <li><span><a title="about" class="" href="/about/">关于我</a></span></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container" id="container">
+    <div id="main" role="main">
+        <header>
+            <h1>js针对性的经典面试题</h1>
+        </header>
+        <article class="content">
+            <p>目前许多小伙伴都在进行水深火热的找工作进行中。本人也是其中的一员。下面我从我所参加过的面试中选出比较有代表性的面试题来分享给各个小伙伴们看一看，希望可以学到更多的知识，早日找到更好的工作。</p>
+<!-- more -->
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+	<span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+	<span class="p">},</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">};</span></code></pre></figure>
+<hr>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span>	<span class="kd">var</span> <span class="nx">a</span><span class="o">=</span><span class="p">{};</span>
+	<span class="kd">var</span> <span class="nx">b</span><span class="o">=</span><span class="p">{</span><span class="nx">key</span><span class="o">:</span><span class="mi">1</span><span class="p">};</span>
+	<span class="kd">var</span> <span class="nx">c</span><span class="o">=</span><span class="p">{</span><span class="nx">key</span><span class="o">:</span><span class="mi">2</span><span class="p">};</span>
+	<span class="nx">a</span><span class="p">[</span><span class="nx">b</span><span class="p">]</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
+	<span class="nx">a</span><span class="p">[</span><span class="nx">c</span><span class="p">]</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">[</span><span class="nx">b</span><span class="p">])</span></code></pre></figure>
+<p>由于对对象的理解不透彻，导致对这题是完全不知道是什么，小伙伴们注意了</p>
+<hr>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span>	<span class="kd">var</span> <span class="nx">a</span><span class="o">=</span><span class="p">{</span><span class="nx">key</span><span class="o">:</span><span class="mi">1</span><span class="p">}</span>
+	<span class="kd">var</span> <span class="nx">b</span><span class="o">=</span><span class="p">{</span><span class="nx">key</span><span class="o">:</span><span class="mi">1</span><span class="p">}</span>
+	<span class="kd">var</span> <span class="nx">c</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+	<span class="kd">var</span> <span class="nx">d</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="o">==</span><span class="nx">b</span><span class="p">)</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="o">===</span><span class="nx">b</span><span class="p">)</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c</span><span class="o">==</span><span class="nx">d</span><span class="p">)</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c</span><span class="o">===</span><span class="nx">d</span><span class="p">)</span></code></pre></figure>
+<p>如果上一题答对了，那这道题应该也不会出问题的。</p>
+<hr>
+<p>待完善……</p>
+        </article>
+    <span class="container flip">
+    <a  href="/2017/03/04/path-all.html" class="pageNav"  >上一篇:安装环境</a>
+    <a  href="/server/2016/04/16/cloud9-simple.html" class="pageNav pageNavRight"  >下一篇:教你如何使用cloud9</a>
+</span><br><br><br><br><br>
+    </div>
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+</div>
+<script>
+var cloudTieConfig = {
+    url: document.location.href,
+    sourceId: "",
+    productKey: "2c84cb00d4bc4014b86827dbac9ff918",
+    target: "cloud-tie-wrapper"
+};
+</script>
+<script>
+//执行文章图片中的点击放大以及模态框
+    var boost=document.getElementsByClassName('boost');
+    var mtk=document.getElementsByClassName('mtk')[0];
+    var body=document.getElementsByTagName('body')[0];
+    var accont=false;
+    for(var i=0;i<boost.length;i++){
+        // boost[i].style.cursor='url("/media/img/cb-close.png"),auto';
+        boost[i].style.cursor='pointer';
+        boost[i].style.position='relative';
+        boost[i].style.zIndex='1';
+        boost[i].index=i;
+        boost[i].onclick=function(){
+            if(accont){
+            mtk.style.opacity='0';
+            mtk.style.transition='all .5s';
+            this.style.transition='all .5s';
+            this.style.transform='scale(1)';
+            mtk.style.zIndex='-1';
+            this.style.zIndex='1';
+            accont=false;
+            }else{
+            mtk.style.opacity='0.9';
+            mtk.style.transition='all .5s';
+            this.style.transition='all .5s'
+            this.style.transform='scale(1.5)';
+            mtk.style.zIndex='2';
+            this.style.zIndex='3';
+            var fThis=this;
+            accont=true;
+            mtk.onclick=function(){
+              mtk.style.opacity='0';
+              mtk.style.transition='all .5s';
+              fThis.style.transition='all .5s';
+              fThis.style.transform='scale(1)';
+              mtk.style.zIndex='-1';
+              fThis.style.zIndex='1';
+    }
+            }
+        }
+    }
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+    <footer>
+        <small style="display: block;line-height: 5em;">Be nice to people on the way up, because you'll need them on your way down</small>
+    </footer>
+</body>
+    <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+</html>
