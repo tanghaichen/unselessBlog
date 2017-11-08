@@ -66,12 +66,13 @@
 
 
         $.getJSON("/media/json/cb-search.json").done(function (data) {
-            console.log(data)
+            // console.log(data)
             if (data.code == 0) {
                 for (var index in data.data) {
                     var item = data.data[index];
                     names.push(item.title);
                     urls.push(item.url);
+                    console.log(names)
                 }
 
                 $("#cb-search-content").typeahead({
