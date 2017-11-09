@@ -80,18 +80,20 @@
 <span class="lineno">4 </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></figure>
 <p>通常来说，我们一个页面上只有一个app，但是可以有多个controller。</p>
 <h4>js</h4>
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="lineno"> 1 </span><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;app&#39;</span> <span class="p">,</span> <span class="p">[]);</span><span class="c1">//获得ng-app</span>
-<span class="lineno"> 2 </span><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;contro&#39;</span> <span class="p">,</span> <span class="p">[</span><span class="s2">&quot;$scope&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span><span class="c1">//设置控制器。其中$scope为controller中所有数据的集合</span>
-<span class="lineno"> 3 </span><span class="nx">$scope</span><span class="p">.</span><span class="nx">kg</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="c1">//设置$scope中的kg为1</span>
-<span class="lineno"> 4 </span><span class="nx">$scope</span><span class="p">.</span><span class="nx">price</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 5 </span><span class="k">if</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">kg</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 6 </span><span class="k">return</span> <span class="mi">15</span><span class="p">;</span>
-<span class="lineno"> 7 </span><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno"> 8 </span><span class="k">return</span> <span class="p">(</span> <span class="mi">15</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">kg</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span> <span class="p">);</span>
-<span class="lineno"> 9 </span><span class="p">}</span>
-<span class="lineno">10 </span><span class="p">}</span>
-<span class="lineno">11 </span><span class="p">}]);</span><span class="c1">//设置$scope中的price为函数</span>
-<span class="lineno">12 </span><span class="c1">//其中的kg在上面的ng-model中使用。price展示在span里</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="lineno"> 1 </span><span class="c1">//定义一个模块</span>
+<span class="lineno"> 2 </span><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;app&#39;</span> <span class="p">,</span> <span class="p">[]);</span><span class="c1">//获得ng-app</span>
+<span class="lineno"> 3 </span><span class="c1">//定义一个控制器</span>
+<span class="lineno"> 4 </span><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;contro&#39;</span> <span class="p">,</span> <span class="p">[</span><span class="s2">&quot;$scope&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">)</span> <span class="p">{</span><span class="c1">//设置控制器。其中$scope为controller中所有数据的集合（是一个空对象）</span>
+<span class="lineno"> 5 </span><span class="nx">$scope</span><span class="p">.</span><span class="nx">kg</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="c1">//设置$scope中的kg为1</span>
+<span class="lineno"> 6 </span><span class="nx">$scope</span><span class="p">.</span><span class="nx">price</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 7 </span><span class="k">if</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">kg</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 8 </span><span class="k">return</span> <span class="mi">15</span><span class="p">;</span>
+<span class="lineno"> 9 </span><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">10 </span><span class="k">return</span> <span class="p">(</span> <span class="mi">15</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">kg</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span> <span class="p">);</span>
+<span class="lineno">11 </span><span class="p">}</span>
+<span class="lineno">12 </span><span class="p">}</span>
+<span class="lineno">13 </span><span class="p">}]);</span><span class="c1">//设置$scope中的price为函数</span>
+<span class="lineno">14 </span><span class="c1">//其中的kg在上面的ng-model中使用。price展示在span里</span></code></pre></figure>
 <p>我们会需要MVC？因为随着代码规模越来越大，切分职责是大势所趋，还有为了后期维护方便，修改一块功能不影响其他功能。还有为了复用，因为很多逻辑是一样的。而MVC只是手段，终极目标是模块化和复用。</p>
 <p>----------------------------------------------</p>
 <ul>
